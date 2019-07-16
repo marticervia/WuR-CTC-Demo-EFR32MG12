@@ -1,6 +1,0 @@
-INFO:root:Creation of 32 bit srec file: "/home/marti/workspace/sdks/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/arm-none-eabi-objcopy" --srec-forceS3 -O srec "DMP_thread_wur_noOS.axf" "DMP_thread_wur_noOS.s37"
-INFO:root:Creation of gbl file: /home/marti/workspace/sdks/SimplicityStudio_v4/developer/adapter_packs/commander/commander gbl create "DMP_thread_wur_noOS.gbl" --app "DMP_thread_wur_noOS.s37" --device EFR32MG12P332F1024GL125
-INFO:root:Creation of 32 bit srec file: "/home/marti/workspace/sdks/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/arm-none-eabi-objcopy" --srec-forceS3 -O srec "DMP_thread_wur_noOS.axf" "DMP_thread_wur_noOS.s37"
-INFO:root:Creation of gbl file: /home/marti/workspace/sdks/SimplicityStudio_v4/developer/adapter_packs/commander/commander gbl create "DMP_thread_wur_noOS.gbl" --app "DMP_thread_wur_noOS.s37" --device EFR32MG12P332F1024GL125
-INFO:root:Creation of 32 bit srec file: "/home/marti/workspace/sdks/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/arm-none-eabi-objcopy" --srec-forceS3 -O srec "DMP_thread_wur_noOS.axf" "DMP_thread_wur_noOS.s37"
-INFO:root:Creation of gbl file: /home/marti/workspace/sdks/SimplicityStudio_v4/developer/adapter_packs/commander/commander gbl create "DMP_thread_wur_noOS.gbl" --app "DMP_thread_wur_noOS.s37" --device EFR32MG12P332F1024GL125
