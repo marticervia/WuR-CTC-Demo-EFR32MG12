@@ -1,0 +1,8 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+USER_OBJS := /home/marti/workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6//protocol/thread/build/thread-mbedtls-stack-cortexm3-gcc-efr32mg12p-rail/thread-mbedtls-stack.a /home/marti/workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6//protocol/thread/build/hal-library-cortexm3-gcc-efr32mg12p-rail/hal-library.a /home/marti/workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6//protocol/thread/build/dhcp-library-cortexm3-gcc-efr32mg12p-rail/dhcp-library.a /home/marti/workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6//platform/radio/rail_lib/autogen/librail_release/librail_multiprotocol_efr32xg12_gcc_release.a /home/marti/workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6//protocol/thread/build/sim-eeprom2-to-nvm3-upgrade-stub-library-cortexm3-gcc-efr32mg12p-rail/sim-eeprom2-to-nvm3-upgrade-stub-library.a /home/marti/workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6//protocol/thread/build/mbedtls-dotdot-library-cortexm3-gcc-efr32mg12p-rail/mbedtls-dotdot-library.a /home/marti/workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6//protocol/thread/build/mfglib-library-cortexm3-gcc-efr32mg12p-rail/mfglib-library.a /home/marti/workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6//platform/emdrv/nvm3/lib/libnvm3_CM4_gcc.a
+
+LIBS := -lm
+
