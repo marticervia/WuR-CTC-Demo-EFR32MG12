@@ -118,15 +118,25 @@
 #define BSP_I2C0_SCL_PIN                      (10U)
 #define BSP_I2C0_SCL_PORT                     (gpioPortC)
 #define BSP_I2C0_SCL_LOC                      (14U)
+#define WuR I2C_SCL_PIN                       (10U)
+#define WuR I2C_SCL_PORT                      (gpioPortC)
+#define WuR I2C_SCL_LOC                       (14U)
 
 #define BSP_I2C0_SDA_PIN                      (11U)
 #define BSP_I2C0_SDA_PORT                     (gpioPortC)
 #define BSP_I2C0_SDA_LOC                      (16U)
+#define WuR I2C_SDA_PIN                       (11U)
+#define WuR I2C_SDA_PORT                      (gpioPortC)
+#define WuR I2C_SDA_LOC                       (16U)
 
 #define HAL_I2C0_INIT_ENABLE                  (1)
 #define HAL_I2C0_MAX_BUS_FREQ                 (0UL)
 #define HAL_I2C0_LOW_HIGH_RATIO               (_I2C_CTRL_CLHR_STANDARD)
 #define HAL_I2C0_MASTER                       (1)
+#define WuR I2C_INIT_ENABLE                   (1)
+#define WuR I2C_MAX_BUS_FREQ                  (0UL)
+#define WuR I2C_LOW_HIGH_RATIO                (_I2C_CTRL_CLHR_STANDARD)
+#define WuR I2C_MASTER                        (1)
 // [I2C0]$
 
 // $[I2C1]
@@ -228,7 +238,7 @@
 #define HAL_SERIAL_RXWAKE_ENABLE              (0)
 #define HAL_SERIAL_IDLE_WAKE_ENABLE           (1)
 #define HAL_SERIAL_LEUART0_ENABLE             (0)
-#define HAL_SERIAL_USART0_ENABLE              (0)
+#define HAL_SERIAL_USART0_ENABLE              (1)
 #define HAL_SERIAL_USART1_ENABLE              (0)
 #define HAL_SERIAL_USART2_ENABLE              (0)
 #define HAL_SERIAL_USART3_ENABLE              (0)
@@ -249,7 +259,7 @@
 #define BSP_SERIAL_APP_RTS_LOC                (30U)
 
 #define HAL_SERIAL_APP_BAUD_RATE              (115200UL)
-#define HAL_SERIAL_APP_FLOW_CONTROL           (HAL_USART_FLOW_CONTROL_HWUART)
+#define HAL_SERIAL_APP_FLOW_CONTROL           (HAL_USART_FLOW_CONTROL_NONE)
 #define HAL_SERIAL_APP_RXSTOP                 (16UL)
 #define HAL_SERIAL_APP_RXSTART                (16UL)
 #define HAL_SERIAL_APP_TX_QUEUE_SIZE          (128UL)

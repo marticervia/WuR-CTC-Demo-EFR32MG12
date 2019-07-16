@@ -7,16 +7,16 @@
 #endif
 
 // Token header for the Scenes Server plugin.
-#include "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/scenes-server/scenes-server-tokens.h"
+#include "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/scenes-server/scenes-server-tokens.h"
 
 // Token header for the Level Control Server plugin.
-#include "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/level-control-server/level-control-server-tokens.h"
+#include "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/level-control-server/level-control-server-tokens.h"
 
 // Token header for the On/Off Server plugin.
-#include "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/on-off-server/on-off-server-tokens.h"
+#include "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/on-off-server/on-off-server-tokens.h"
 
 // Token header for the ZCL Core plugin.
-#include "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-token.h"
+#include "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-token.h"
 
 #ifdef CUSTOM_TOKEN_HEADER
   #include CUSTOM_TOKEN_HEADER

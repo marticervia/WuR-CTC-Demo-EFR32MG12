@@ -6,33 +6,124 @@ LST_DIR = lst
 PROJECTNAME = light
 
 # Stack and submodule directories
-GLOBAL_BASE_DIR     = ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/..
+GLOBAL_BASE_DIR     = ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/..
 
 SOURCE_FILES = \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/dmadrv/src/dmadrv.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/gpiointerrupt/src/gpiointerrupt.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/rtcdrv/src/rtcdriver.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/sleep/src/sleep.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/tempdrv/src/tempdrv.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/ustimer/src/ustimer.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_adc.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_cmu.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_core.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_emu.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_gpio.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_i2c.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_ldma.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_leuart.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_msc.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_prs.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_rmu.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_rtcc.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_se.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_system.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_timer.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_usart.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_wdog.c \
-../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../Device/SiliconLabs/EFR32MG12P/Source/system_efr32mg12p.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/dmadrv/src/dmadrv.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/gpiointerrupt/src/gpiointerrupt.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/rtcdrv/src/rtcdriver.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/sleep/src/sleep.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/tempdrv/src/tempdrv.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/ustimer/src/ustimer.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_adc.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_cmu.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_core.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_emu.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_gpio.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_i2c.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_ldma.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_leuart.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_msc.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_prs.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_rmu.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_rtcc.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_se.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_system.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_timer.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_usart.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/src/em_wdog.c \
+../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../Device/SiliconLabs/EFR32MG12P/Source/system_efr32mg12p.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/assert-crash-handlers.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/bootloader-interface-app.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/bootloader-interface.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/button.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/cstartup-common.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/faults-v7m.s79 \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/hal-config-gpio.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/hal-config.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/isr-stubs.s79 \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/led.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/long-token.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/mfg-token.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/micro-common.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/micro.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/mpu.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/sleep-efm32.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/token.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/generic/crc.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/generic/diagnostic-stub.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/generic/endian.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/generic/mem-util.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/generic/random.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/generic/token-def.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/adc/adc-efr32.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/antenna-stub/antenna-stub.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/buzzer/buzzer-efr32.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/debug-jtag/debug-jtag-efr32.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/debug/rtt/SEGGER_RTT.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/serial/cortexm/efm32/com.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/serial/ember-printf.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/serial/serial.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/bootloader/api/btl_interface.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/bootloader/api/btl_interface_storage.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/emdrv/nvm3/src/nvm3_default.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/emdrv/nvm3/src/nvm3_hal_flash.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/emdrv/nvm3/src/nvm3_lock.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/emdrv/uartdrv/src/uartdrv.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/plugin/coexistence/protocol/ieee802154/coexistence-802154.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/plugin/coexistence/protocol/ieee802154/coulomb-counter-802154.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/address-configuration-debug/address-configuration-debug.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/cli/cli.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/coap-dispatch/coap-dispatch.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/debug-print/debug-print.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/dhcp-client/dhcp-client.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/dtls-auth-params/dtls-auth-params.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/dtls-auth-params/sample-dotdot-certificates.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/heartbeat/heartbeat.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/icmp-debug/icmp-debug.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/idle-sleep/idle-sleep.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/main/main.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/scan-debug/scan-debug.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/slaac-client/slaac-client.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/udp-debug/udp-debug.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/version-debug/version-debug.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/basic-server/basic-server.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/groups-server/groups-server.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/identify-server/identify-server.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/level-control-server/level-control-server.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/on-off-server/on-off-server.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/ota-bootload-client-policy/ota-bootload-client-policy.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/ota-bootload-client/ota-bootload-client.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/ota-bootload-core/ota-bootload-core.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/ota-bootload-storage-eeprom/ota-bootload-storage-eeprom.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/scenes-server/scenes-server.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core-cli/zcl-core-cli-implementation.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/cbor-encoder.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-access.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-attribute.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-binding.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-cache.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-cli.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-command.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-dtls-manager.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-endpoint.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-ez-mode.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-group.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-message.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-notification.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-reporting.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-resource-directory.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-uri.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-well-known.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zclip-struct.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/util/serial/command-interpreter2-error.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/util/serial/command-interpreter2-util.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/util/serial/command-interpreter2.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/config/ember-ip-configuration.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/plugin/plugin-afv6/eeprom/eeprom-print.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/plugin/plugin-common/eeprom/eeprom-cli.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/plugin/plugin-common/eeprom/eeprom.c \
   light-implementation.c \
   thread-bookkeeping.c \
   thread-callback-stubs.c \
@@ -41,108 +132,17 @@ SOURCE_FILES = \
   thread-coap-dispatch.c \
   thread-events.c \
   thread-zclip.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/assert-crash-handlers.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/bootloader-interface-app.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/bootloader-interface.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/button.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/cstartup-common.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/faults-v7m.s79 \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/hal-config-gpio.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/hal-config.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/isr-stubs.s79 \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/led.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/long-token.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/mfg-token.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/micro-common.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/micro.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/mpu.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/sleep-efm32.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/token.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/generic/crc.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/generic/diagnostic-stub.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/generic/endian.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/generic/mem-util.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/generic/random.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/generic/token-def.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/adc/adc-efr32.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/antenna-stub/antenna-stub.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/buzzer/buzzer-efr32.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/debug-jtag/debug-jtag-efr32.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/debug/rtt/SEGGER_RTT.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/serial/cortexm/efm32/com.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/serial/ember-printf.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/serial/serial.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/bootloader/api/btl_interface.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/bootloader/api/btl_interface_storage.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/emdrv/nvm3/src/nvm3_default.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/emdrv/nvm3/src/nvm3_hal_flash.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/emdrv/nvm3/src/nvm3_lock.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/emdrv/uartdrv/src/uartdrv.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/plugin/coexistence/protocol/ieee802154/coexistence-802154.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/plugin/coexistence/protocol/ieee802154/coulomb-counter-802154.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/address-configuration-debug/address-configuration-debug.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/cli/cli.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/coap-dispatch/coap-dispatch.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/debug-print/debug-print.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/dhcp-client/dhcp-client.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/dtls-auth-params/dtls-auth-params.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/dtls-auth-params/sample-dotdot-certificates.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/heartbeat/heartbeat.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/icmp-debug/icmp-debug.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/idle-sleep/idle-sleep.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/main/main.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/scan-debug/scan-debug.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/slaac-client/slaac-client.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/udp-debug/udp-debug.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/version-debug/version-debug.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/basic-server/basic-server.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/groups-server/groups-server.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/identify-server/identify-server.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/level-control-server/level-control-server.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/on-off-server/on-off-server.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/ota-bootload-client-policy/ota-bootload-client-policy.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/ota-bootload-client/ota-bootload-client.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/ota-bootload-core/ota-bootload-core.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/ota-bootload-storage-eeprom/ota-bootload-storage-eeprom.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/scenes-server/scenes-server.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core-cli/zcl-core-cli-implementation.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/cbor-encoder.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-access.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-attribute.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-binding.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-cache.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-cli.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-command.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-dtls-manager.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-endpoint.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-ez-mode.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-group.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-message.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-notification.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-reporting.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-resource-directory.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-uri.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-well-known.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zclip-struct.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/util/serial/command-interpreter2-error.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/util/serial/command-interpreter2-util.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/util/serial/command-interpreter2.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/config/ember-ip-configuration.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/plugin/plugin-afv6/eeprom/eeprom-print.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/plugin/plugin-common/eeprom/eeprom-cli.c \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/plugin/plugin-common/eeprom/eeprom.c \
 
 
 LIB_FILES = \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/emdrv/nvm3/lib/libnvm3_CM4_gcc.a \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/autogen/librail_release/librail_multiprotocol_efr32xg12_gcc_release.a \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/build/dhcp-library-cortexm3-gcc-efr32mg12p-rail/dhcp-library.a \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/build/hal-library-cortexm3-gcc-efr32mg12p-rail/hal-library.a \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/build/mbedtls-dotdot-library-cortexm3-gcc-efr32mg12p-rail/mbedtls-dotdot-library.a \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/build/mfglib-library-cortexm3-gcc-efr32mg12p-rail/mfglib-library.a \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/build/sim-eeprom2-to-nvm3-upgrade-stub-library-cortexm3-gcc-efr32mg12p-rail/sim-eeprom2-to-nvm3-upgrade-stub-library.a \
-  ../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/build/thread-mbedtls-stack-cortexm3-gcc-efr32mg12p-rail/thread-mbedtls-stack.a \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/emdrv/nvm3/lib/libnvm3_CM4_gcc.a \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/autogen/librail_release/librail_multiprotocol_efr32xg12_gcc_release.a \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/build/dhcp-library-cortexm3-gcc-efr32mg12p-rail/dhcp-library.a \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/build/hal-library-cortexm3-gcc-efr32mg12p-rail/hal-library.a \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/build/mbedtls-dotdot-library-cortexm3-gcc-efr32mg12p-rail/mbedtls-dotdot-library.a \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/build/mfglib-library-cortexm3-gcc-efr32mg12p-rail/mfglib-library.a \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/build/sim-eeprom2-to-nvm3-upgrade-stub-library-cortexm3-gcc-efr32mg12p-rail/sim-eeprom2-to-nvm3-upgrade-stub-library.a \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/build/thread-mbedtls-stack-cortexm3-gcc-efr32mg12p-rail/thread-mbedtls-stack.a \
 
 
 CDEFS = -DAPP_GECKO_INFO_PAGE_BTL \
@@ -154,7 +154,7 @@ CDEFS = -DAPP_GECKO_INFO_PAGE_BTL \
 -DCORTEXM3_EFM32_MICRO \
 -DEFR32_SERIES1_CONFIG2_MICRO \
 -DCONFIGURATION_HEADER=\"thread-configuration.h\" \
--DPLATFORM_HEADER=\"../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/compiler/gcc.h\" \
+-DPLATFORM_HEADER=\"../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/compiler/gcc.h\" \
 -DPSSTORE_SIZE=0" \
 -DLONGTOKEN_SIZE=0" \
 -DLOCKBITS_IN_MAINFLASH_SIZE=0" \
@@ -191,7 +191,7 @@ ASMDEFS = -DAPP_GECKO_INFO_PAGE_BTL \
 -DCORTEXM3_EFM32_MICRO \
 -DEFR32_SERIES1_CONFIG2_MICRO \
 -DCONFIGURATION_HEADER=\"thread-configuration.h\" \
--DPLATFORM_HEADER=\"../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/compiler/gcc.h\" \
+-DPLATFORM_HEADER=\"../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/compiler/gcc.h\" \
 -DPSSTORE_SIZE=0" \
 -DLONGTOKEN_SIZE=0" \
 -DLOCKBITS_IN_MAINFLASH_SIZE=0" \
@@ -221,52 +221,52 @@ ASMDEFS = -DAPP_GECKO_INFO_PAGE_BTL \
 
 CINC = -I./ \
 -I$(ARM_IAR7_DIR)/ARM/INC \
--I..\..\..\workspace\sdks\SimplicityStudio_v4\developer\sdks\gecko_sdk_suite\v2.6 \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/../.. \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/../../stack \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/../util \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/.. \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32 \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/config \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/efr32 \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../CMSIS/Include \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../Device/SiliconLabs-Restricted/efr32mg12p/Include \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../Device/SiliconLabs/efr32mg12p/Include \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/common/inc \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/config \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/dmadrv/inc \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/gpiointerrupt/inc \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/rtcdrv/inc \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/sleep/inc \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/spidrv/inc \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/tempdrv/inc \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/uartdrv/inc \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/ustimer/inc \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/inc \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../middleware/glib \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../middleware/glib/glib \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../radio/rail_lib/plugin \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../halconfig/inc/hal-config \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6 \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/halconfig/inc/hal-config \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/hardware/module/config \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/hardware/kit/common/halconfig \
--I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/hardware/kit/common/bsp \
+-I..\..\..\sdks\SimplicityStudio_v4\developer\sdks\gecko_sdk_suite\v2.6 \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/../.. \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/../../stack \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/../util \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/.. \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32 \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/config \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/efm32/efr32 \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../CMSIS/Include \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../Device/SiliconLabs-Restricted/efr32mg12p/Include \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../Device/SiliconLabs/efr32mg12p/Include \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/common/inc \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/config \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/dmadrv/inc \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/gpiointerrupt/inc \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/rtcdrv/inc \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/sleep/inc \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/spidrv/inc \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/tempdrv/inc \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/uartdrv/inc \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emdrv/ustimer/inc \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../emlib/inc \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../middleware/glib \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../middleware/glib/glib \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../radio/rail_lib/plugin \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/../../halconfig/inc/hal-config \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6 \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/halconfig/inc/hal-config \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/hardware/module/config \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/hardware/kit/common/halconfig \
+-I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/hardware/kit/common/bsp \
+  -I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/bootloader \
+  -I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/emdrv/nvm3/inc \
+  -I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/chip/efr32/efr32xg1x \
+  -I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/common \
+  -I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/plugin/coexistence/common \
+  -I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/plugin/coexistence/hal/efr32 \
+  -I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/plugin/coexistence/protocol/ieee802154 \
+  -I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/protocol/ble \
+  -I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/protocol/ieee802154 \
+  -I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/protocol/zwave \
+  -I../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/third_party/mbedtls/include \
   -Ihal-config \
-  -I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/bootloader \
-  -I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/emdrv/nvm3/inc \
-  -I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/chip/efr32/efr32xg1x \
-  -I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/common \
-  -I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/plugin/coexistence/common \
-  -I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/plugin/coexistence/hal/efr32 \
-  -I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/plugin/coexistence/protocol/ieee802154 \
-  -I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/protocol/ble \
-  -I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/protocol/ieee802154 \
-  -I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/protocol/zwave \
-  -I../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/third_party/mbedtls/include \
 
 
 TARGET = light

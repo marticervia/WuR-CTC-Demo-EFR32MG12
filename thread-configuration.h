@@ -214,148 +214,148 @@
 // Generated API headers
 
 // API adc-cortexm3 from ADC plugin
-#define EMBER_AF_API_ADC_CORTEXM3 "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/adc/adc-cortexm3.h"
+#define EMBER_AF_API_ADC_CORTEXM3 "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/adc/adc-cortexm3.h"
 
 // API adc from ADC plugin
-#define EMBER_AF_API_ADC "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/adc/adc.h"
+#define EMBER_AF_API_ADC "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/adc/adc.h"
 
 // API antenna from Antenna Stub plugin
-#define EMBER_AF_API_ANTENNA "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/antenna/antenna.h"
+#define EMBER_AF_API_ANTENNA "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/antenna/antenna.h"
 
 // API button from Button plugin
-#define EMBER_AF_API_BUTTON "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/button.h"
+#define EMBER_AF_API_BUTTON "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/button.h"
 
 // API buzzer from Buzzer plugin
-#define EMBER_AF_API_BUZZER "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/buzzer/buzzer.h"
+#define EMBER_AF_API_BUZZER "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/buzzer/buzzer.h"
 
 // API coap-dispatch from CoAP Dispatch plugin
-#define EMBER_AF_API_COAP_DISPATCH "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/coap-dispatch/coap-dispatch.h"
+#define EMBER_AF_API_COAP_DISPATCH "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/coap-dispatch/coap-dispatch.h"
 
 // API coexistence from Radio Coexistence Stub plugin
-#define EMBER_AF_API_COEXISTENCE "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/plugin/coexistence/protocol/ieee802154/coexistence-802154.h"
+#define EMBER_AF_API_COEXISTENCE "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/plugin/coexistence/protocol/ieee802154/coexistence-802154.h"
 
 // API command-interpreter2 from Command Interpreter plugin
-#define EMBER_AF_API_COMMAND_INTERPRETER2 "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/util/serial/command-interpreter2.h"
+#define EMBER_AF_API_COMMAND_INTERPRETER2 "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/util/serial/command-interpreter2.h"
 
 // API debug-print from Debug Print plugin
-#define EMBER_AF_API_DEBUG_PRINT "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/debug-print/debug-print.h"
+#define EMBER_AF_API_DEBUG_PRINT "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/debug-print/debug-print.h"
 
 // API diagnostic from Diagnostic Stub plugin
-#define EMBER_AF_API_DIAGNOSTIC "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/diagnostic.h"
+#define EMBER_AF_API_DIAGNOSTIC "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/diagnostic.h"
 
 // API eeprom from EEPROM plugin
-#define EMBER_AF_API_EEPROM "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/plugin/plugin-common/eeprom/eeprom.h"
+#define EMBER_AF_API_EEPROM "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/plugin/plugin-common/eeprom/eeprom.h"
 
 // API eeprom-print from EEPROM plugin
-#define EMBER_AF_API_EEPROM_PRINT "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/plugin/plugin-afv6/eeprom/eeprom-print.h"
+#define EMBER_AF_API_EEPROM_PRINT "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/plugin/plugin-afv6/eeprom/eeprom-print.h"
 
 // API crc from HAL Library plugin
-#define EMBER_AF_API_CRC "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/crc.h"
+#define EMBER_AF_API_CRC "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/crc.h"
 
 // API endian from HAL Library plugin
-#define EMBER_AF_API_ENDIAN "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/endian.h"
+#define EMBER_AF_API_ENDIAN "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/endian.h"
 
 // API hal from HAL Library plugin
-#define EMBER_AF_API_HAL "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/hal.h"
+#define EMBER_AF_API_HAL "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/hal.h"
 
 // API random from HAL Library plugin
-#define EMBER_AF_API_RANDOM "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/random.h"
+#define EMBER_AF_API_RANDOM "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/random.h"
 
 // API system-timer from HAL Library plugin
-#define EMBER_AF_API_SYSTEM_TIMER "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/system-timer.h"
+#define EMBER_AF_API_SYSTEM_TIMER "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/system-timer.h"
 
 // API token-cortexm3 from HAL Library plugin
-#define EMBER_AF_API_TOKEN_CORTEXM3 "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/token.h"
+#define EMBER_AF_API_TOKEN_CORTEXM3 "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/token.h"
 
 // API token from HAL Library plugin
-#define EMBER_AF_API_TOKEN "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/token.h"
+#define EMBER_AF_API_TOKEN "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/token.h"
 
 // API led from LED plugin
-#define EMBER_AF_API_LED "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/led.h"
+#define EMBER_AF_API_LED "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/led.h"
 
 // API zcl-level-control-server from Level Control Server plugin
-#define EMBER_AF_API_ZCL_LEVEL_CONTROL_SERVER "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/level-control-server/level-control-server.h"
+#define EMBER_AF_API_ZCL_LEVEL_CONTROL_SERVER "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/level-control-server/level-control-server.h"
 
 // API mfglib from Manufacturing Library plugin
-#define EMBER_AF_API_MFGLIB "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/mfglib.h"
+#define EMBER_AF_API_MFGLIB "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/mfglib.h"
 
 // API nvm3 from NVM3 Library plugin
-#define EMBER_AF_API_NVM3 "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/nvm3/nvm3-token.h"
+#define EMBER_AF_API_NVM3 "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/nvm3/nvm3-token.h"
 
 // API zcl-ota-bootload-client from OTA Bootload Client plugin
-#define EMBER_AF_API_ZCL_OTA_BOOTLOAD_CLIENT "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/ota-bootload-client/ota-bootload-client.h"
+#define EMBER_AF_API_ZCL_OTA_BOOTLOAD_CLIENT "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/ota-bootload-client/ota-bootload-client.h"
 
 // API zcl-ota-bootload-core from OTA Bootload Core plugin
-#define EMBER_AF_API_ZCL_OTA_BOOTLOAD_CORE "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/ota-bootload-core/ota-bootload-core.h"
+#define EMBER_AF_API_ZCL_OTA_BOOTLOAD_CORE "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/ota-bootload-core/ota-bootload-core.h"
 
 // API zcl-ota-bootload-storage-core from OTA Bootload Storage Core plugin
-#define EMBER_AF_API_ZCL_OTA_BOOTLOAD_STORAGE_CORE "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/ota-bootload-storage-core/ota-bootload-storage-core.h"
+#define EMBER_AF_API_ZCL_OTA_BOOTLOAD_STORAGE_CORE "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/ota-bootload-storage-core/ota-bootload-storage-core.h"
 
 // API rail-library from RAIL Library Multiprotocol plugin
-#define EMBER_AF_API_RAIL_LIBRARY "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/common/rail.h"
+#define EMBER_AF_API_RAIL_LIBRARY "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/common/rail.h"
 
 // API zcl-scenes-server from Scenes Server plugin
-#define EMBER_AF_API_ZCL_SCENES_SERVER "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/scenes-server/scenes-server.h"
+#define EMBER_AF_API_ZCL_SCENES_SERVER "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/scenes-server/scenes-server.h"
 
 // API serial from Serial plugin
-#define EMBER_AF_API_SERIAL "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/serial/serial.h"
+#define EMBER_AF_API_SERIAL "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/plugin/serial/serial.h"
 
 // API buffer-management from Thread Stack Library with mbed TLS support plugin
-#define EMBER_AF_API_BUFFER_MANAGEMENT "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/framework/buffer-management.h"
+#define EMBER_AF_API_BUFFER_MANAGEMENT "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/framework/buffer-management.h"
 
 // API buffer-queue from Thread Stack Library with mbed TLS support plugin
-#define EMBER_AF_API_BUFFER_QUEUE "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/framework/buffer-queue.h"
+#define EMBER_AF_API_BUFFER_QUEUE "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/framework/buffer-queue.h"
 
 // API child from Thread Stack Library with mbed TLS support plugin
-#define EMBER_AF_API_CHILD "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/child.h"
+#define EMBER_AF_API_CHILD "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/child.h"
 
 // API coap-diagnostic from Thread Stack Library with mbed TLS support plugin
-#define EMBER_AF_API_COAP_DIAGNOSTIC "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/network-diagnostics.h"
+#define EMBER_AF_API_COAP_DIAGNOSTIC "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/network-diagnostics.h"
 
 // API coap from Thread Stack Library with mbed TLS support plugin
-#define EMBER_AF_API_COAP "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/coap.h"
+#define EMBER_AF_API_COAP "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/coap.h"
 
 // API event-queue from Thread Stack Library with mbed TLS support plugin
-#define EMBER_AF_API_EVENT_QUEUE "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/framework/event-queue.h"
+#define EMBER_AF_API_EVENT_QUEUE "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/framework/event-queue.h"
 
 // API event from Thread Stack Library with mbed TLS support plugin
-#define EMBER_AF_API_EVENT "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/event.h"
+#define EMBER_AF_API_EVENT "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/event.h"
 
 // API icmp from Thread Stack Library with mbed TLS support plugin
-#define EMBER_AF_API_ICMP "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/icmp.h"
+#define EMBER_AF_API_ICMP "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/icmp.h"
 
 // API network-diagnostics from Thread Stack Library with mbed TLS support plugin
-#define EMBER_AF_API_NETWORK_DIAGNOSTICS "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/network-diagnostics.h"
+#define EMBER_AF_API_NETWORK_DIAGNOSTICS "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/network-diagnostics.h"
 
 // API network-management from Thread Stack Library with mbed TLS support plugin
-#define EMBER_AF_API_NETWORK_MANAGEMENT "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/network-management.h"
+#define EMBER_AF_API_NETWORK_MANAGEMENT "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/network-management.h"
 
 // API stack-info from Thread Stack Library with mbed TLS support plugin
-#define EMBER_AF_API_STACK_INFO "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/stack-info.h"
+#define EMBER_AF_API_STACK_INFO "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/stack-info.h"
 
 // API stack from Thread Stack Library with mbed TLS support plugin
-#define EMBER_AF_API_STACK "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/ember.h"
+#define EMBER_AF_API_STACK "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/ember.h"
 
 // API tcp from Thread Stack Library with mbed TLS support plugin
-#define EMBER_AF_API_TCP "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/tcp.h"
+#define EMBER_AF_API_TCP "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/tcp.h"
 
 // API udp-peer from Thread Stack Library with mbed TLS support plugin
-#define EMBER_AF_API_UDP_PEER "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/udp-peer.h"
+#define EMBER_AF_API_UDP_PEER "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/udp-peer.h"
 
 // API udp from Thread Stack Library with mbed TLS support plugin
-#define EMBER_AF_API_UDP "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/udp.h"
+#define EMBER_AF_API_UDP "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/include/udp.h"
 
 // API zcl-core from ZCL Core plugin
-#define EMBER_AF_API_ZCL_CORE "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core.h"
+#define EMBER_AF_API_ZCL_CORE "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core.h"
 
 // API zcl-core-well-known from ZCL Core plugin
-#define EMBER_AF_API_ZCL_CORE_WELL_KNOWN "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-well-known.h"
+#define EMBER_AF_API_ZCL_CORE_WELL_KNOWN "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-well-known.h"
 
 // API zcl-core-dtls-manager from ZCL Core plugin
-#define EMBER_AF_API_ZCL_CORE_DTLS_MANAGER "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-dtls-manager.h"
+#define EMBER_AF_API_ZCL_CORE_DTLS_MANAGER "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-dtls-manager.h"
 
 // API zcl-core-resource-directory from ZCL Core plugin
-#define EMBER_AF_API_ZCL_CORE_RESOURCE_DIRECTORY "../../../workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-resource-directory.h"
+#define EMBER_AF_API_ZCL_CORE_RESOURCE_DIRECTORY "../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/zcl-core/zcl-core-resource-directory.h"
 
 
 // Coap Dispatch macros
