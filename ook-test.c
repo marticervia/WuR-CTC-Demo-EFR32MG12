@@ -283,9 +283,9 @@ void RAILCb_Generic(RAIL_Handle_t railHandle, RAIL_Events_t events)
 {
   (void)railHandle;
   if (events & RAIL_EVENT_CAL_NEEDED) {
-      // Calibrate if necessary
-      RAIL_Calibrate(railHandle, NULL, RAIL_CAL_ALL_PENDING);
-	  emberAfCorePrintln("CAL NEEDED!");
+	// Calibrate if necessary
+	RAIL_Calibrate(railHandle, NULL, RAIL_CAL_ALL_PENDING);
+	emberAfCorePrintln("CAL_NEEDED!");
   }
   if( events & RAIL_EVENT_TX_BLOCKED){
 	RAIL_ResetFifo(railHandle, true, false);

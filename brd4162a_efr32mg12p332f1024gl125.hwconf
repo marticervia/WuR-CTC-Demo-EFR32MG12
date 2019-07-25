@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<device:XMLDevice xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:device="http://www.silabs.com/ss/hwconfig/document/device.ecore" name="EFR32MG12P332F1024GL125" partId="mcu.arm.efr32.mg12.efr32mg12p332f1024gl125" contextId="com.silabs.sdk.stack.super:2.6.0._-1424890514">
+<device:XMLDevice xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:device="http://www.silabs.com/ss/hwconfig/document/device.ecore" name="EFR32MG12P332F1024GL125" partId="mcu.arm.efr32.mg12.efr32mg12p332f1024gl125" contextId="com.silabs.sdk.stack.super:2.6.1._-1424890514">
   <mode name="DefaultMode">
     <property object="BATTERYMON" propertyId="BATTERYMON.BSP_BATTERYMON_TX_ACTIVE4.PIN" value="PD13"/>
     <property object="BTL_BUTTON" propertyId="BTL_BUTTON.BSP_BTL_BUTTON.PIN" value="PF6"/>
@@ -26,9 +26,10 @@
     <property object="I2C0" propertyId="ABPeripheral.included" value="true"/>
     <property object="I2C0" propertyId="I2C.BSP_I2C_SCL.PIN" value="PC10"/>
     <property object="I2C0" propertyId="I2C.BSP_I2C_SDA.PIN" value="PC11"/>
-    <property object="I2C0" propertyId="I2C.HAL_I2C_INIT_ENABLE.BOOL" value="1"/>
     <property object="I2C0" propertyId="I2C.HAL_I2C_MASTER.BOOL" value="1"/>
-    <property object="I2C0" propertyId="I2C.customname.STRING" value="WuR I2C"/>
+    <property object="I2C0" propertyId="I2C.HAL_I2C_MAX_BUS_FREQ.INT" value="100000"/>
+    <property object="I2C0" propertyId="I2C.HAL_I2C_SLAVE_ADDRESS.INT" value="40"/>
+    <property object="I2C0" propertyId="I2C.customname.STRING" value="WuR_I2C"/>
     <property object="I2C0" propertyId="I2C.showadvanced.BOOL" value="1"/>
     <property object="I2C1" propertyId="I2C.showadvanced.BOOL" value="1"/>
     <property object="I2CSENSOR" propertyId="I2CSENSOR.BSP_I2CSENSOR_ENABLE.PIN" value="PB10"/>
