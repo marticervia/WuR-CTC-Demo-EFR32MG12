@@ -87,7 +87,6 @@
     <property object="USART0" propertyId="USART.BSP_USART_RTS.PIN" value="PA3"/>
     <property object="USART0" propertyId="USART.BSP_USART_RX.PIN" value="PA1"/>
     <property object="USART0" propertyId="USART.BSP_USART_TX.PIN" value="PA0"/>
-    <property object="USART0" propertyId="USART.HAL_USART_FLOW_CONTROL.ENUM" value="HAL_USART_FLOW_CONTROL_HWUART"/>
     <property object="USART0" propertyId="USART.HAL_USART_RXSTART.INT" value="16"/>
     <property object="USART0" propertyId="USART.HAL_USART_RXSTOP.INT" value="16"/>
     <property object="USART0" propertyId="USART.HAL_USART_RX_QUEUE_SIZE.INT" value="128"/>

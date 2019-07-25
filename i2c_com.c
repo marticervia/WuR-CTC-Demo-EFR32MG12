@@ -1,5 +1,5 @@
 #include "i2c_com.h"
-#include "em_i2c.h"
+
 #include "em_cmu.h"
 #include "hal-config.h"
 /*
@@ -30,7 +30,7 @@ void i2c_com_init(void){
 
 }
 
-static I2C_TransferReturn_TypeDef _i2c_com_master_transfer(uint8_t i2c_slave_addr, uint8_t i2c_mode, uint8_t* buffer_1, uint16_t buffer_1_len,\
+static inline I2C_TransferReturn_TypeDef _i2c_com_master_transfer(uint8_t i2c_slave_addr, uint16_t i2c_mode, uint8_t* buffer_1, uint16_t buffer_1_len,
 		uint8_t* buffer_2, uint16_t buffer_2_len){
 
 	// Transfer structure
@@ -55,11 +55,21 @@ static I2C_TransferReturn_TypeDef _i2c_com_master_transfer(uint8_t i2c_slave_add
 	return result;
 }
 
-I2C_TransferReturn_TypeDef i2c_com_write_register(uint8_t i2c_slave_addr, uint8_t reg_addr, uint8_t write_buf, uint16_t write_buf_len){
+I2C_TransferReturn_TypeDef i2c_com_write_register(uint8_t i2c_slave_addr, uint8_t reg_addr, uint8_t *write_buf, uint16_t write_buf_len){
+	uint8_t reg_buffer[1];
+
+	reg_buffer[0] = reg_addr;
+
+	return _i2c_com_master_transfer(i2c_slave_addr, I2C_FLAG_WRITE_WRITE, reg_buffer,1, write_buf, write_buf_len);
 
 }
 
-I2C_TransferReturn_TypeDef i2c_com_read_register(uint8_t i2c_slave_addr, uint8_t reg_addr, uint8_t write_buf, uint16_t write_buf_len){
+I2C_TransferReturn_TypeDef i2c_com_read_register(uint8_t i2c_slave_addr, uint8_t reg_addr, uint8_t *read_buf, uint16_t read_buf_len){
+	uint8_t reg_buffer[1];
+
+	reg_buffer[0] = reg_addr;
+
+	return _i2c_com_master_transfer(i2c_slave_addr, I2C_FLAG_WRITE_READ, reg_buffer,1, read_buf, read_buf_len);
 
 }
 

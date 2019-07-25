@@ -259,7 +259,7 @@
 #define BSP_SERIAL_APP_RTS_LOC                (30U)
 
 #define HAL_SERIAL_APP_BAUD_RATE              (115200UL)
-#define HAL_SERIAL_APP_FLOW_CONTROL           (HAL_USART_FLOW_CONTROL_HWUART)
+#define HAL_SERIAL_APP_FLOW_CONTROL           (HAL_USART_FLOW_CONTROL_NONE)
 #define HAL_SERIAL_APP_RXSTOP                 (16UL)
 #define HAL_SERIAL_APP_RXSTART                (16UL)
 #define HAL_SERIAL_APP_TX_QUEUE_SIZE          (128UL)
@@ -317,7 +317,7 @@
 #define BSP_USART0_RTS_LOC                    (30U)
 
 #define HAL_USART0_BAUD_RATE                  (115200UL)
-#define HAL_USART0_FLOW_CONTROL               (HAL_USART_FLOW_CONTROL_HWUART)
+#define HAL_USART0_FLOW_CONTROL               (HAL_USART_FLOW_CONTROL_NONE)
 #define HAL_USART0_RXSTOP                     (16UL)
 #define HAL_USART0_RXSTART                    (16UL)
 #define HAL_USART0_TX_QUEUE_SIZE              (128UL)

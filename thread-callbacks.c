@@ -16,7 +16,9 @@
 #include EMBER_AF_API_ZCL_OTA_BOOTLOAD_CORE
 #include EMBER_AF_API_ZCL_OTA_BOOTLOAD_CLIENT
 #include "rtcdriver.h"
+
 #include "ook-test.h"
+#include "i2c_wur.h"
 
 /** @brief Init
  *
@@ -31,6 +33,11 @@ void emberAfInitCallback(void)
 	emberAfCorePrintln("----------- Starting OOK Task! -----------");
 	int32_t res = startOOKRadio();
 	emberAfCorePrintln("Launched OOK task with res %d.", res);
+
+	emberAfCorePrintln("----------- Starting i2c WuR interface! -----------");
+	wur_i2c_init();
+	emberAfCorePrintln("----------- Started i2c WuR interface! -----------");
+
 }
 
 /** @brief Tick
@@ -43,10 +50,12 @@ void emberAfInitCallback(void)
  * will block.  On Unix hosts, process yielding (e.g., via select) will block.
  */
 uint32_t ook_frame_timestamp = 0;
+uint32_t i2c_frame_timestamp = 0;
 
 void emberAfTickCallback(void)
 {
 	uint32_t current_timestamp = halCommonGetInt32uMillisecondTick();
+	uint16_t wur_addr;
 	//run each second
 	if(100 <= elapsedTimeInt32u(ook_frame_timestamp, current_timestamp)){
 		//emberAfCorePrintln("[%d]: Preparing OOK frame.", current_timestamp);
@@ -57,6 +66,16 @@ void emberAfTickCallback(void)
 		}else{
 			emberAfCorePrintln("[%d]: Failed to launch OOK frame with res %d.", current_timestamp, res);
 			ook_frame_timestamp = current_timestamp;
+		}
+	}
+	if(1000 <= elapsedTimeInt32u(i2c_frame_timestamp, current_timestamp)){
+		int32_t res = wur_get_address(&wur_addr);
+		if(res == 0){
+			emberAfCorePrintln("[%d]: Got WuR Addr 0x%02x.", current_timestamp, res);
+			i2c_frame_timestamp = current_timestamp;
+		}else{
+			emberAfCorePrintln("[%d]: Failed to get WuR address with res %d.", current_timestamp, res);
+			i2c_frame_timestamp = current_timestamp;
 		}
 	}
 }
