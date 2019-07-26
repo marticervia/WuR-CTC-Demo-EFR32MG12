@@ -59,7 +59,7 @@ uint8_t wur_get_address(uint16_t* addr){
 		return WUR_KO;
 	}
 
-	DEBUG_PRINT("Read WuR Addr as 0x%02X%02X.\n", addrBuf[0], addrBuf[1]);
+	DEBUG_PRINT("Read WuR Addr as 0x%01X%01X.\n", addrBuf[0], addrBuf[1]);
 
 	*addr = 0;
 	*addr |= (addrBuf[0] & 0x0F) << 8;

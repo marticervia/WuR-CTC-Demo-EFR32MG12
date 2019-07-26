@@ -71,7 +71,7 @@ void emberAfTickCallback(void)
 	if(1000 <= elapsedTimeInt32u(i2c_frame_timestamp, current_timestamp)){
 		int32_t res = wur_get_address(&wur_addr);
 		if(res == 0){
-			emberAfCorePrintln("[%d]: Got WuR Addr 0x%02x.", current_timestamp, res);
+			emberAfCorePrintln("[%d]: Got WuR Addr 0x%02x.", current_timestamp, wur_addr);
 			i2c_frame_timestamp = current_timestamp;
 		}else{
 			emberAfCorePrintln("[%d]: Failed to get WuR address with res %d.", current_timestamp, res);
