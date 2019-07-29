@@ -128,8 +128,8 @@
 #define WuR_I2C_SDA_PIN                       (11U)
 #define WuR_I2C_SDA_PORT                      (gpioPortC)
 #define WuR_I2C_SDA_LOC                       (16U)
-#define WuR_I2C_WAKE_PORT                      (gpioPortD)
-#define WuR_I2C_WAKE_LOC                       (8U)
+#define WuR_I2C_WAKE_PORT                     (gpioPortD)
+#define WuR_I2C_WAKE_LOC                      (8U)
 
 #define HAL_I2C0_INIT_ENABLE                  (0)
 #define HAL_I2C0_MAX_BUS_FREQ                 (100000UL)

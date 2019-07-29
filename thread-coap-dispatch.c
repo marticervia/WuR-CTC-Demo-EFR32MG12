@@ -6,7 +6,7 @@
   #include CONFIGURATION_HEADER
 #endif // CONFIGURATION_HEADER
 #include EMBER_AF_API_COAP_DISPATCH
-
+#include "wur-implementation.h"
 EmberAfCoapDispatchHandler diagnosticAnswerHandler;
 EmberAfCoapDispatchHandler emZclHandler;
 
@@ -15,5 +15,7 @@ const EmberAfCoapDispatchEntry emberAfCoapDispatchTable[] = {
   {EMBER_AF_COAP_DISPATCH_METHOD_ANY, "zcl/", 4, emZclHandler},
   {EMBER_AF_COAP_DISPATCH_METHOD_ANY, ".well-known/core/", 17, emZclHandler},
   {EMBER_AF_COAP_DISPATCH_METHOD_ANY, "rd/", 3, emZclHandler},
+  {EMBER_AF_COAP_DISPATCH_METHOD_POST, "wur/wake/", 9, WuRWakeDevice},
+  {EMBER_AF_COAP_DISPATCH_METHOD_POST, "wur/data/", 9, WuRRequestDevice},
   {0, NULL, 0, NULL}, // terminator
 };

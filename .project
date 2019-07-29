@@ -46,6 +46,11 @@
 			<locationURI>STUDIO_SDK_LOC/protocol/thread/app/thread/plugin/cli/cli.c</locationURI>
 		</link>
 		<link>
+			<name>coap-cli/coap-cli.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/protocol/thread/app/thread/plugin/coap-cli/coap-cli.c</locationURI>
+		</link>
+		<link>
 			<name>coap-dispatch/coap-dispatch.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/protocol/thread/app/thread/plugin/coap-dispatch/coap-dispatch.c</locationURI>
@@ -261,6 +266,11 @@
 			<locationURI>STUDIO_SDK_LOC/protocol/thread/app/thread/plugin/heartbeat/heartbeat.c</locationURI>
 		</link>
 		<link>
+			<name>icmp-cli/icmp-cli.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/protocol/thread/app/thread/plugin/icmp-cli/icmp-cli.c</locationURI>
+		</link>
+		<link>
 			<name>icmp-debug/icmp-debug.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/protocol/thread/app/thread/plugin/icmp-debug/icmp-debug.c</locationURI>
@@ -284,6 +294,21 @@
 			<name>main/main.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/protocol/thread/app/thread/plugin/main/main.c</locationURI>
+		</link>
+		<link>
+			<name>network-diagnostics-cli/network-diagnostics-cli.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/protocol/thread/app/thread/plugin/network-diagnostics-cli/network-diagnostics-cli.c</locationURI>
+		</link>
+		<link>
+			<name>network-diagnostics-cli/network-diagnostics.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/protocol/thread/stack/ip/network-diagnostics.c</locationURI>
+		</link>
+		<link>
+			<name>network-management-cli/network-management-cli.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/protocol/thread/app/thread/plugin/network-management-cli/network-management-cli.c</locationURI>
 		</link>
 		<link>
 			<name>nvm3/nvm3_lock.c</name>
@@ -334,6 +359,11 @@
 			<name>slaac-client/slaac-client.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/protocol/thread/app/thread/plugin/slaac-client/slaac-client.c</locationURI>
+		</link>
+		<link>
+			<name>udp-cli/udp-cli.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/protocol/thread/app/thread/plugin/udp-cli/udp-cli.c</locationURI>
 		</link>
 		<link>
 			<name>udp-debug/udp-debug.c</name>

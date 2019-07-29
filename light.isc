@@ -1,5 +1,5 @@
 #ISD afv6
-# Simplicity Studio version: 5.8.5.201906251613-1497
+# Simplicity Studio version: 5.10.1.201907152233-1510
 
 # Application configuration
 stackId: com.silabs.sdk.stack.super
@@ -41,7 +41,7 @@ appPlugin: buzzer=true
 appPlugin: buzzer-stub=false
 appPlugin: cjson=false
 appPlugin: cli=true
-appPlugin: coap-cli=false
+appPlugin: coap-cli=true
 appPlugin: coap-debug=false
 appPlugin: coap-dispatch=true
 appPlugin: coexistence=false
@@ -87,7 +87,7 @@ appPlugin: host-network-management=false
 appPlugin: humidity-si7021-stub=false
 appPlugin: i2c-driver=false
 appPlugin: i2c-driver-stub=false
-appPlugin: icmp-cli=false
+appPlugin: icmp-cli=true
 appPlugin: icmp-debug=true
 appPlugin: identify-server=true
 appPlugin: idle-sleep=true
@@ -122,8 +122,8 @@ appPlugin: mpsi-storage=false
 appPlugin: ncp-library=false
 appPlugin: ncp-spi-link=false
 appPlugin: ncp-uart-link=false
-appPlugin: network-diagnostics-cli=false
-appPlugin: network-management-cli=false
+appPlugin: network-diagnostics-cli=true
+appPlugin: network-management-cli=true
 appPlugin: nvm3=true
 appPlugin: occupancy-pyd1698=false
 appPlugin: occupancy-pyd1698-stub=false
@@ -174,7 +174,7 @@ appPlugin: thread-vncp-stack=false
 appPlugin: time-client=false
 appPlugin: time-server=false
 appPlugin: transport-mqtt=false
-appPlugin: udp-cli=false
+appPlugin: udp-cli=true
 appPlugin: udp-debug=true
 appPlugin: unix-library=false
 appPlugin: version-debug=true
@@ -244,7 +244,7 @@ on
 }
 {setupId:debugConfiguration
 on
-area name off
+area name on
 appSerial=1
 compile,EMBER_AF_PLUGIN_ZCL_CORE
 enable,EMBER_AF_PLUGIN_ZCL_CORE
@@ -325,6 +325,7 @@ specVersions:hc-1.0-07-5360-15
 specVersions:l&o-1.0-15-0014-04
 specVersions:se-1.4-17-05019-001
 specVersions:ta-1.0-07-5307-07
+specVersions:zcl6-errata-14-0129-15
 specVersions:zll-1.0-11-0037-10
 }
 

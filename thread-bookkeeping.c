@@ -4,234 +4,234 @@
 
 #include PLATFORM_HEADER
 #include CONFIGURATION_HEADER
+#include EMBER_AF_API_STACK
 #include EMBER_AF_API_ZCL_CORE
 #include EMBER_AF_API_ZCL_SCENES_SERVER
-#include EMBER_AF_API_STACK
-
-// EraseScene function declarations.
-void emZclLevelControlServerEraseSceneHandler(uint8_t tableIdx);
-void emZclOnOffServerEraseSceneHandler(uint8_t tableIdx);
-void emberZclEraseSceneCallback(uint8_t tableIdx);
-
-void emZclEraseScene(uint8_t tableIdx)
-{
-  emZclLevelControlServerEraseSceneHandler(tableIdx);
-  emZclOnOffServerEraseSceneHandler(tableIdx);
-  emberZclEraseSceneCallback(tableIdx);
-}
-
-// AddScene function declarations.
-bool emZclLevelControlServerAddSceneHandler(EmberZclClusterId_t clusterId, uint8_t tableIdx, const uint8_t *sceneData, uint8_t length);
-bool emZclOnOffServerAddSceneHandler(EmberZclClusterId_t clusterId, uint8_t tableIdx, const uint8_t *sceneData, uint8_t length);
-bool emberZclAddSceneCallback(EmberZclClusterId_t clusterId, uint8_t tableIdx, const uint8_t *sceneData, uint8_t length);
-
-bool emZclAddScene(EmberZclClusterId_t clusterId, uint8_t tableIdx, const uint8_t *sceneData, uint8_t length)
-{
-  return (emZclLevelControlServerAddSceneHandler(clusterId, tableIdx, sceneData, length)
-          || emZclOnOffServerAddSceneHandler(clusterId, tableIdx, sceneData, length)
-          || emberZclAddSceneCallback(clusterId, tableIdx, sceneData, length));
-}
-
-// RecallScene function declarations.
-void emZclLevelControlServerRecallSceneHandler(EmberZclEndpointId_t endpointId, uint8_t tableIdx, uint32_t transitionTime100mS);
-void emZclOnOffServerRecallSceneHandler(EmberZclEndpointId_t endpointId, uint8_t tableIdx, uint32_t transitionTime100mS);
-void emberZclRecallSceneCallback(EmberZclEndpointId_t endpointId, uint8_t tableIdx, uint32_t transitionTime100mS);
-
-void emZclRecallScene(EmberZclEndpointId_t endpointId, uint8_t tableIdx, uint32_t transitionTime100mS)
-{
-  emZclLevelControlServerRecallSceneHandler(endpointId, tableIdx, transitionTime100mS);
-  emZclOnOffServerRecallSceneHandler(endpointId, tableIdx, transitionTime100mS);
-  emberZclRecallSceneCallback(endpointId, tableIdx, transitionTime100mS);
-}
-
-// StoreScene function declarations.
-void emZclLevelControlServerStoreSceneHandler(EmberZclEndpointId_t endpointId, uint8_t tableIdx);
-void emZclOnOffServerStoreSceneHandler(EmberZclEndpointId_t endpointId, uint8_t tableIdx);
-void emberZclStoreSceneCallback(EmberZclEndpointId_t endpointId, uint8_t tableIdx);
-
-void emZclStoreScene(EmberZclEndpointId_t endpointId, uint8_t tableIdx)
-{
-  emZclLevelControlServerStoreSceneHandler(endpointId, tableIdx);
-  emZclOnOffServerStoreSceneHandler(endpointId, tableIdx);
-  emberZclStoreSceneCallback(endpointId, tableIdx);
-}
-
-// CopyScene function declarations.
-void emZclLevelControlServerCopySceneHandler(uint8_t srcTableIdx, uint8_t dstTableIdx);
-void emZclOnOffServerCopySceneHandler(uint8_t srcTableIdx, uint8_t dstTableIdx);
-void emberZclCopySceneCallback(uint8_t srcTableIdx, uint8_t dstTableIdx);
-
-void emZclCopyScene(uint8_t srcTableIdx, uint8_t dstTableIdx)
-{
-  emZclLevelControlServerCopySceneHandler(srcTableIdx, dstTableIdx);
-  emZclOnOffServerCopySceneHandler(srcTableIdx, dstTableIdx);
-  emberZclCopySceneCallback(srcTableIdx, dstTableIdx);
-}
-
-// ViewScene function declarations.
-void emZclLevelControlServerViewSceneHandler(uint8_t tableIdx, uint8_t **ppExtFldData);
-void emZclOnOffServerViewSceneHandler(uint8_t tableIdx, uint8_t **ppExtFldData);
-void emberZclViewSceneCallback(uint8_t tableIdx, uint8_t **ppExtFldData);
-
-void emZclViewScene(uint8_t tableIdx, uint8_t **ppExtFldData)
-{
-  emZclLevelControlServerViewSceneHandler(tableIdx, ppExtFldData);
-  emZclOnOffServerViewSceneHandler(tableIdx, ppExtFldData);
-  emberZclViewSceneCallback(tableIdx, ppExtFldData);
-}
-
-// PrintInfoScene function declarations.
-void emZclLevelControlServerPrintInfoSceneHandler(uint8_t tableIdx);
-void emZclOnOffServerPrintInfoSceneHandler(uint8_t tableIdx);
-void emberZclPrintInfoSceneCallback(uint8_t tableIdx);
-
-void emZclPrintInfoScene(uint8_t tableIdx)
-{
-  emZclLevelControlServerPrintInfoSceneHandler(tableIdx);
-  emZclOnOffServerPrintInfoSceneHandler(tableIdx);
-  emberZclPrintInfoSceneCallback(tableIdx);
-}
-
-// PreAttributeChange function declarations.
-bool emZclGroupsServerPreAttributeChangeHandler(EmberZclEndpointId_t endpointId, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength);
-bool emberZclPreAttributeChangeCallback(EmberZclEndpointId_t endpointId, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength);
-
-bool emZclPreAttributeChange(EmberZclEndpointId_t endpointId, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength)
-{
-  return (emZclGroupsServerPreAttributeChangeHandler(endpointId, clusterSpec, attributeId, buffer, bufferLength)
-          && emberZclPreAttributeChangeCallback(endpointId, clusterSpec, attributeId, buffer, bufferLength));
-}
-
-// PostAttributeChange function declarations.
-void emZclIdentifyServerPostAttributeChangeHandler(EmberZclEndpointId_t endpointId, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength);
-void emZclReportingPostAttributeChangeHandler(EmberZclEndpointId_t endpointId, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength);
-void emberZclPostAttributeChangeCallback(EmberZclEndpointId_t endpointId, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength);
-
-void emZclPostAttributeChange(EmberZclEndpointId_t endpointId, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength)
-{
-  emZclIdentifyServerPostAttributeChangeHandler(endpointId, clusterSpec, attributeId, buffer, bufferLength);
-  emZclReportingPostAttributeChangeHandler(endpointId, clusterSpec, attributeId, buffer, bufferLength);
-  emberZclPostAttributeChangeCallback(endpointId, clusterSpec, attributeId, buffer, bufferLength);
-}
-
-// Notification function declarations.
-void emberZclNotificationCallback(const EmberZclNotificationContext_t *context, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength);
-
-void emZclNotification(const EmberZclNotificationContext_t *context, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength)
-{
-  emberZclNotificationCallback(context, clusterSpec, attributeId, buffer, bufferLength);
-}
 
 // OkToSleep function declarations.
-bool emberAfPluginIdleSleepOkToSleepCallback(uint32_t durationMs);
+bool emberAfPluginIdleSleepOkToSleepCallback(uint32_t durationMs);  // Plugin: idle-sleep
 
 bool emberAfOkToSleep(uint32_t durationMs)
 {
-  return emberAfPluginIdleSleepOkToSleepCallback(durationMs);
+  return emberAfPluginIdleSleepOkToSleepCallback(durationMs);  // Plugin: idle-sleep
 }
 
 // WakeUp function declarations.
-void emberAfPluginIdleSleepWakeUpCallback(uint32_t durationMs);
+void emberAfPluginIdleSleepWakeUpCallback(uint32_t durationMs);  // Plugin: idle-sleep
 
 void emberAfPluginIdleSleepWakeUp(uint32_t durationMs)
 {
-  emberAfPluginIdleSleepWakeUpCallback(durationMs);
+  emberAfPluginIdleSleepWakeUpCallback(durationMs);  // Plugin: idle-sleep
 }
 
 // OkToIdle function declarations.
-bool emberAfPluginIdleSleepOkToIdleCallback(uint32_t durationMs);
+bool emberAfPluginIdleSleepOkToIdleCallback(uint32_t durationMs);  // Plugin: idle-sleep
 
 bool emberAfOkToIdle(uint32_t durationMs)
 {
-  return emberAfPluginIdleSleepOkToIdleCallback(durationMs);
+  return emberAfPluginIdleSleepOkToIdleCallback(durationMs);  // Plugin: idle-sleep
 }
 
 // Active function declarations.
-void emberAfPluginIdleSleepActiveCallback(uint32_t durationMs);
+void emberAfPluginIdleSleepActiveCallback(uint32_t durationMs);  // Plugin: idle-sleep
 
 void emberAfPluginIdleSleepActive(uint32_t durationMs)
 {
-  emberAfPluginIdleSleepActiveCallback(durationMs);
+  emberAfPluginIdleSleepActiveCallback(durationMs);  // Plugin: idle-sleep
 }
 
 // Main function declarations.
-void emberAfMainCallback(MAIN_FUNCTION_PARAMETERS);
+void emberAfMainCallback(MAIN_FUNCTION_PARAMETERS);  // Plugin: main
 
 void emAfMain(MAIN_FUNCTION_PARAMETERS)
 {
-  emberAfMainCallback(MAIN_FUNCTION_ARGUMENTS);
+  emberAfMainCallback(MAIN_FUNCTION_ARGUMENTS);  // Plugin: main
 }
 
 // Init function declarations.
-void emZclInitHandler(void);
-void emZclOtaBootloadClientInitCallback(void);
-void emZclOtaBootloadStorageEepromInitCallback(void);
-void emZclScenesServerInitHandler(void);
-void emberAfInitCallback(void);
-void emberAfPluginEepromInitCallback(void);
-void emberCommandReaderInit(void);
+void emberCommandReaderInit(void);  // Plugin: command-interpreter2
+void emberAfPluginEepromInitCallback(void);  // Plugin: eeprom
+void emberAfInitCallback(void);  // Plugin: main
+void emZclOtaBootloadClientInitCallback(void);  // Plugin: ota-bootload-client
+void emZclOtaBootloadStorageEepromInitCallback(void);  // Plugin: ota-bootload-storage-eeprom
+void emZclScenesServerInitHandler(void);  // Plugin: scenes-server
+void emZclInitHandler(void);  // Plugin: zcl-core
 
 void emAfInit(void)
 {
-  emZclInitHandler();
-  emZclOtaBootloadClientInitCallback();
-  emZclOtaBootloadStorageEepromInitCallback();
-  emZclScenesServerInitHandler();
-  emberAfInitCallback();
-  emberAfPluginEepromInitCallback();
-  emberCommandReaderInit();
+  emberCommandReaderInit();  // Plugin: command-interpreter2
+  emberAfPluginEepromInitCallback();  // Plugin: eeprom
+  emberAfInitCallback();  // Plugin: main
+  emZclOtaBootloadClientInitCallback();  // Plugin: ota-bootload-client
+  emZclOtaBootloadStorageEepromInitCallback();  // Plugin: ota-bootload-storage-eeprom
+  emZclScenesServerInitHandler();  // Plugin: scenes-server
+  emZclInitHandler();  // Plugin: zcl-core
 }
 
 // Tick function declarations.
-void emberAfPluginCliTickCallback(void);
-void emberAfPluginHeartbeatTickCallback(void);
-void emberAfPluginIdleSleepTickCallback(void);
-void emberAfTickCallback(void);
-void emberSerialBufferTick(void);
-void emberTick(void);
+void emberAfPluginCliTickCallback(void);  // Plugin: cli
+void emberAfPluginHeartbeatTickCallback(void);  // Plugin: heartbeat
+void emberAfPluginIdleSleepTickCallback(void);  // Plugin: idle-sleep
+void emberTick(void);  // Plugin: main
+void emberAfTickCallback(void);  // Plugin: main
+void emberSerialBufferTick(void);  // Plugin: serial
 
 void emAfTick(void)
 {
-  emberAfPluginCliTickCallback();
-  emberAfPluginHeartbeatTickCallback();
-  emberAfPluginIdleSleepTickCallback();
-  emberAfTickCallback();
-  emberSerialBufferTick();
-  emberTick();
+  emberAfPluginCliTickCallback();  // Plugin: cli
+  emberAfPluginHeartbeatTickCallback();  // Plugin: heartbeat
+  emberAfPluginIdleSleepTickCallback();  // Plugin: idle-sleep
+  emberTick();  // Plugin: main
+  emberAfTickCallback();  // Plugin: main
+  emberSerialBufferTick();  // Plugin: serial
 }
 
 // MarkApplicationBuffers function declarations.
-void emZclAccessMarkApplicationBuffersHandler(void);
-void emZclCacheMarkApplicationBuffersHandler(void);
-void emZclDtlsManagerMarkBuffers(void);
-void emZclReportingMarkApplicationBuffersHandler(void);
-void emZclResourceDirectoryClientMarkBuffers(void);
-void emberAfMarkApplicationBuffersCallback(void);
+void emberAfMarkApplicationBuffersCallback(void);  // Plugin: main
+void emZclAccessMarkApplicationBuffersHandler(void);  // Plugin: zcl-core
+void emZclCacheMarkApplicationBuffersHandler(void);  // Plugin: zcl-core
+void emZclDtlsManagerMarkBuffers(void);  // Plugin: zcl-core
+void emZclReportingMarkApplicationBuffersHandler(void);  // Plugin: zcl-core
+void emZclResourceDirectoryClientMarkBuffers(void);  // Plugin: zcl-core
 
 void emAfMarkApplicationBuffers(void)
 {
-  emZclAccessMarkApplicationBuffersHandler();
-  emZclCacheMarkApplicationBuffersHandler();
-  emZclDtlsManagerMarkBuffers();
-  emZclReportingMarkApplicationBuffersHandler();
-  emZclResourceDirectoryClientMarkBuffers();
-  emberAfMarkApplicationBuffersCallback();
+  emberAfMarkApplicationBuffersCallback();  // Plugin: main
+  emZclAccessMarkApplicationBuffersHandler();  // Plugin: zcl-core
+  emZclCacheMarkApplicationBuffersHandler();  // Plugin: zcl-core
+  emZclDtlsManagerMarkBuffers();  // Plugin: zcl-core
+  emZclReportingMarkApplicationBuffersHandler();  // Plugin: zcl-core
+  emZclResourceDirectoryClientMarkBuffers();  // Plugin: zcl-core
 }
 
 // NetworkStatus function declarations.
-void emZclBindingNetworkStatusHandler(EmberNetworkStatus newNetworkStatus, EmberNetworkStatus oldNetworkStatus, EmberJoinFailureReason reason);
-void emZclCacheNetworkStatusHandler(EmberNetworkStatus newNetworkStatus, EmberNetworkStatus oldNetworkStatus, EmberJoinFailureReason reason);
-void emZclGroupNetworkStatusHandler(EmberNetworkStatus newNetworkStatus, EmberNetworkStatus oldNetworkStatus, EmberJoinFailureReason reason);
-void emZclOtaBootloadClientNetworkStatusCallback(EmberNetworkStatus newNetworkStatus, EmberNetworkStatus oldNetworkStatus, EmberJoinFailureReason reason);
-void emZclReportingNetworkStatusHandler(EmberNetworkStatus newNetworkStatus, EmberNetworkStatus oldNetworkStatus, EmberJoinFailureReason reason);
-void emberAfNetworkStatusCallback(EmberNetworkStatus newNetworkStatus, EmberNetworkStatus oldNetworkStatus, EmberJoinFailureReason reason);
+void emberAfNetworkStatusCallback(EmberNetworkStatus newNetworkStatus, EmberNetworkStatus oldNetworkStatus, EmberJoinFailureReason reason);  // Plugin: main
+void emZclOtaBootloadClientNetworkStatusCallback(EmberNetworkStatus newNetworkStatus, EmberNetworkStatus oldNetworkStatus, EmberJoinFailureReason reason);  // Plugin: ota-bootload-client
+void emZclBindingNetworkStatusHandler(EmberNetworkStatus newNetworkStatus, EmberNetworkStatus oldNetworkStatus, EmberJoinFailureReason reason);  // Plugin: zcl-core
+void emZclCacheNetworkStatusHandler(EmberNetworkStatus newNetworkStatus, EmberNetworkStatus oldNetworkStatus, EmberJoinFailureReason reason);  // Plugin: zcl-core
+void emZclGroupNetworkStatusHandler(EmberNetworkStatus newNetworkStatus, EmberNetworkStatus oldNetworkStatus, EmberJoinFailureReason reason);  // Plugin: zcl-core
+void emZclReportingNetworkStatusHandler(EmberNetworkStatus newNetworkStatus, EmberNetworkStatus oldNetworkStatus, EmberJoinFailureReason reason);  // Plugin: zcl-core
 
 void emberNetworkStatusHandler(EmberNetworkStatus newNetworkStatus, EmberNetworkStatus oldNetworkStatus, EmberJoinFailureReason reason)
 {
-  emZclBindingNetworkStatusHandler(newNetworkStatus, oldNetworkStatus, reason);
-  emZclCacheNetworkStatusHandler(newNetworkStatus, oldNetworkStatus, reason);
-  emZclGroupNetworkStatusHandler(newNetworkStatus, oldNetworkStatus, reason);
-  emZclOtaBootloadClientNetworkStatusCallback(newNetworkStatus, oldNetworkStatus, reason);
-  emZclReportingNetworkStatusHandler(newNetworkStatus, oldNetworkStatus, reason);
-  emberAfNetworkStatusCallback(newNetworkStatus, oldNetworkStatus, reason);
+  emberAfNetworkStatusCallback(newNetworkStatus, oldNetworkStatus, reason);  // Plugin: main
+  emZclOtaBootloadClientNetworkStatusCallback(newNetworkStatus, oldNetworkStatus, reason);  // Plugin: ota-bootload-client
+  emZclBindingNetworkStatusHandler(newNetworkStatus, oldNetworkStatus, reason);  // Plugin: zcl-core
+  emZclCacheNetworkStatusHandler(newNetworkStatus, oldNetworkStatus, reason);  // Plugin: zcl-core
+  emZclGroupNetworkStatusHandler(newNetworkStatus, oldNetworkStatus, reason);  // Plugin: zcl-core
+  emZclReportingNetworkStatusHandler(newNetworkStatus, oldNetworkStatus, reason);  // Plugin: zcl-core
+}
+
+// EraseScene function declarations.
+void emZclLevelControlServerEraseSceneHandler(uint8_t tableIdx);  // Plugin: level-control-server
+void emZclOnOffServerEraseSceneHandler(uint8_t tableIdx);  // Plugin: on-off-server
+void emberZclEraseSceneCallback(uint8_t tableIdx);  // Plugin: scenes-server
+
+void emZclEraseScene(uint8_t tableIdx)
+{
+  emZclLevelControlServerEraseSceneHandler(tableIdx);  // Plugin: level-control-server
+  emZclOnOffServerEraseSceneHandler(tableIdx);  // Plugin: on-off-server
+  emberZclEraseSceneCallback(tableIdx);  // Plugin: scenes-server
+}
+
+// AddScene function declarations.
+bool emZclLevelControlServerAddSceneHandler(EmberZclClusterId_t clusterId, uint8_t tableIdx, const uint8_t *sceneData, uint8_t length);  // Plugin: level-control-server
+bool emZclOnOffServerAddSceneHandler(EmberZclClusterId_t clusterId, uint8_t tableIdx, const uint8_t *sceneData, uint8_t length);  // Plugin: on-off-server
+bool emberZclAddSceneCallback(EmberZclClusterId_t clusterId, uint8_t tableIdx, const uint8_t *sceneData, uint8_t length);  // Plugin: scenes-server
+
+bool emZclAddScene(EmberZclClusterId_t clusterId, uint8_t tableIdx, const uint8_t *sceneData, uint8_t length)
+{
+  return (emZclLevelControlServerAddSceneHandler(clusterId, tableIdx, sceneData, length)  /* Plugin: level-control-server */
+          || emZclOnOffServerAddSceneHandler(clusterId, tableIdx, sceneData, length)  /* Plugin: on-off-server */
+          || emberZclAddSceneCallback(clusterId, tableIdx, sceneData, length)  /* Plugin: scenes-server */);
+}
+
+// RecallScene function declarations.
+void emZclLevelControlServerRecallSceneHandler(EmberZclEndpointId_t endpointId, uint8_t tableIdx, uint32_t transitionTime100mS);  // Plugin: level-control-server
+void emZclOnOffServerRecallSceneHandler(EmberZclEndpointId_t endpointId, uint8_t tableIdx, uint32_t transitionTime100mS);  // Plugin: on-off-server
+void emberZclRecallSceneCallback(EmberZclEndpointId_t endpointId, uint8_t tableIdx, uint32_t transitionTime100mS);  // Plugin: scenes-server
+
+void emZclRecallScene(EmberZclEndpointId_t endpointId, uint8_t tableIdx, uint32_t transitionTime100mS)
+{
+  emZclLevelControlServerRecallSceneHandler(endpointId, tableIdx, transitionTime100mS);  // Plugin: level-control-server
+  emZclOnOffServerRecallSceneHandler(endpointId, tableIdx, transitionTime100mS);  // Plugin: on-off-server
+  emberZclRecallSceneCallback(endpointId, tableIdx, transitionTime100mS);  // Plugin: scenes-server
+}
+
+// StoreScene function declarations.
+void emZclLevelControlServerStoreSceneHandler(EmberZclEndpointId_t endpointId, uint8_t tableIdx);  // Plugin: level-control-server
+void emZclOnOffServerStoreSceneHandler(EmberZclEndpointId_t endpointId, uint8_t tableIdx);  // Plugin: on-off-server
+void emberZclStoreSceneCallback(EmberZclEndpointId_t endpointId, uint8_t tableIdx);  // Plugin: scenes-server
+
+void emZclStoreScene(EmberZclEndpointId_t endpointId, uint8_t tableIdx)
+{
+  emZclLevelControlServerStoreSceneHandler(endpointId, tableIdx);  // Plugin: level-control-server
+  emZclOnOffServerStoreSceneHandler(endpointId, tableIdx);  // Plugin: on-off-server
+  emberZclStoreSceneCallback(endpointId, tableIdx);  // Plugin: scenes-server
+}
+
+// CopyScene function declarations.
+void emZclLevelControlServerCopySceneHandler(uint8_t srcTableIdx, uint8_t dstTableIdx);  // Plugin: level-control-server
+void emZclOnOffServerCopySceneHandler(uint8_t srcTableIdx, uint8_t dstTableIdx);  // Plugin: on-off-server
+void emberZclCopySceneCallback(uint8_t srcTableIdx, uint8_t dstTableIdx);  // Plugin: scenes-server
+
+void emZclCopyScene(uint8_t srcTableIdx, uint8_t dstTableIdx)
+{
+  emZclLevelControlServerCopySceneHandler(srcTableIdx, dstTableIdx);  // Plugin: level-control-server
+  emZclOnOffServerCopySceneHandler(srcTableIdx, dstTableIdx);  // Plugin: on-off-server
+  emberZclCopySceneCallback(srcTableIdx, dstTableIdx);  // Plugin: scenes-server
+}
+
+// ViewScene function declarations.
+void emZclLevelControlServerViewSceneHandler(uint8_t tableIdx, uint8_t **ppExtFldData);  // Plugin: level-control-server
+void emZclOnOffServerViewSceneHandler(uint8_t tableIdx, uint8_t **ppExtFldData);  // Plugin: on-off-server
+void emberZclViewSceneCallback(uint8_t tableIdx, uint8_t **ppExtFldData);  // Plugin: scenes-server
+
+void emZclViewScene(uint8_t tableIdx, uint8_t **ppExtFldData)
+{
+  emZclLevelControlServerViewSceneHandler(tableIdx, ppExtFldData);  // Plugin: level-control-server
+  emZclOnOffServerViewSceneHandler(tableIdx, ppExtFldData);  // Plugin: on-off-server
+  emberZclViewSceneCallback(tableIdx, ppExtFldData);  // Plugin: scenes-server
+}
+
+// PrintInfoScene function declarations.
+void emZclLevelControlServerPrintInfoSceneHandler(uint8_t tableIdx);  // Plugin: level-control-server
+void emZclOnOffServerPrintInfoSceneHandler(uint8_t tableIdx);  // Plugin: on-off-server
+void emberZclPrintInfoSceneCallback(uint8_t tableIdx);  // Plugin: scenes-server
+
+void emZclPrintInfoScene(uint8_t tableIdx)
+{
+  emZclLevelControlServerPrintInfoSceneHandler(tableIdx);  // Plugin: level-control-server
+  emZclOnOffServerPrintInfoSceneHandler(tableIdx);  // Plugin: on-off-server
+  emberZclPrintInfoSceneCallback(tableIdx);  // Plugin: scenes-server
+}
+
+// PreAttributeChange function declarations.
+bool emZclGroupsServerPreAttributeChangeHandler(EmberZclEndpointId_t endpointId, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength);  // Plugin: groups-server
+bool emberZclPreAttributeChangeCallback(EmberZclEndpointId_t endpointId, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength);  // Plugin: zcl-core
+
+bool emZclPreAttributeChange(EmberZclEndpointId_t endpointId, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength)
+{
+  return (emZclGroupsServerPreAttributeChangeHandler(endpointId, clusterSpec, attributeId, buffer, bufferLength)  /* Plugin: groups-server */
+          && emberZclPreAttributeChangeCallback(endpointId, clusterSpec, attributeId, buffer, bufferLength)  /* Plugin: zcl-core */);
+}
+
+// PostAttributeChange function declarations.
+void emZclIdentifyServerPostAttributeChangeHandler(EmberZclEndpointId_t endpointId, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength);  // Plugin: identify-server
+void emberZclPostAttributeChangeCallback(EmberZclEndpointId_t endpointId, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength);  // Plugin: zcl-core
+void emZclReportingPostAttributeChangeHandler(EmberZclEndpointId_t endpointId, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength);  // Plugin: zcl-core
+
+void emZclPostAttributeChange(EmberZclEndpointId_t endpointId, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength)
+{
+  emZclIdentifyServerPostAttributeChangeHandler(endpointId, clusterSpec, attributeId, buffer, bufferLength);  // Plugin: identify-server
+  emberZclPostAttributeChangeCallback(endpointId, clusterSpec, attributeId, buffer, bufferLength);  // Plugin: zcl-core
+  emZclReportingPostAttributeChangeHandler(endpointId, clusterSpec, attributeId, buffer, bufferLength);  // Plugin: zcl-core
+}
+
+// Notification function declarations.
+void emberZclNotificationCallback(const EmberZclNotificationContext_t *context, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength);  // Plugin: zcl-core
+
+void emZclNotification(const EmberZclNotificationContext_t *context, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength)
+{
+  emberZclNotificationCallback(context, clusterSpec, attributeId, buffer, bufferLength);  // Plugin: zcl-core
 }

@@ -9,9 +9,27 @@
 
 #include PLATFORM_HEADER
 #include CONFIGURATION_HEADER
+#include EMBER_AF_API_STACK
 #include EMBER_AF_API_ZCL_CORE
 #include EMBER_AF_API_ZCL_SCENES_SERVER
-#include EMBER_AF_API_STACK
+
+bool emberAfOkToSleep(uint32_t durationMs);
+
+void emberAfPluginIdleSleepWakeUp(uint32_t durationMs);
+
+bool emberAfOkToIdle(uint32_t durationMs);
+
+void emberAfPluginIdleSleepActive(uint32_t durationMs);
+
+void emAfMain(MAIN_FUNCTION_PARAMETERS);
+
+void emAfInit(void);
+
+void emAfTick(void);
+
+void emAfMarkApplicationBuffers(void);
+
+void emberNetworkStatusHandler(EmberNetworkStatus newNetworkStatus, EmberNetworkStatus oldNetworkStatus, EmberJoinFailureReason reason);
 
 void emZclEraseScene(uint8_t tableIdx);
 
@@ -32,23 +50,5 @@ bool emZclPreAttributeChange(EmberZclEndpointId_t endpointId, const EmberZclClus
 void emZclPostAttributeChange(EmberZclEndpointId_t endpointId, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength);
 
 void emZclNotification(const EmberZclNotificationContext_t *context, const EmberZclClusterSpec_t *clusterSpec, EmberZclAttributeId_t attributeId, const void *buffer, size_t bufferLength);
-
-bool emberAfOkToSleep(uint32_t durationMs);
-
-void emberAfPluginIdleSleepWakeUp(uint32_t durationMs);
-
-bool emberAfOkToIdle(uint32_t durationMs);
-
-void emberAfPluginIdleSleepActive(uint32_t durationMs);
-
-void emAfMain(MAIN_FUNCTION_PARAMETERS);
-
-void emAfInit(void);
-
-void emAfTick(void);
-
-void emAfMarkApplicationBuffers(void);
-
-void emberNetworkStatusHandler(EmberNetworkStatus newNetworkStatus, EmberNetworkStatus oldNetworkStatus, EmberJoinFailureReason reason);
 
 #endif // SILABS_THREAD_BOOKKEEPING_H

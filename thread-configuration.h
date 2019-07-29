@@ -40,6 +40,9 @@
 // Use this macro to check if CLI plugin is included
 #define EMBER_AF_PLUGIN_CLI
 
+// Use this macro to check if CoAP CLI plugin is included
+#define EMBER_AF_PLUGIN_COAP_CLI
+
 // Use this macro to check if CoAP Dispatch plugin is included
 #define EMBER_AF_PLUGIN_COAP_DISPATCH
 
@@ -88,6 +91,9 @@
 // User options for plugin Heartbeat
 #define EMBER_AF_PLUGIN_HEARTBEAT_PERIOD_QS 1
 
+// Use this macro to check if ICMP CLI plugin is included
+#define EMBER_AF_PLUGIN_ICMP_CLI
+
 // Use this macro to check if ICMP Debug plugin is included
 #define EMBER_AF_PLUGIN_ICMP_DEBUG
 
@@ -116,6 +122,12 @@
 
 // Use this macro to check if Manufacturing Library plugin is included
 #define EMBER_AF_PLUGIN_MFGLIB_LIBRARY
+
+// Use this macro to check if Network Diagnostics CLI plugin is included
+#define EMBER_AF_PLUGIN_NETWORK_DIAGNOSTICS_CLI
+
+// Use this macro to check if Network Management CLI plugin is included
+#define EMBER_AF_PLUGIN_NETWORK_MANAGEMENT_CLI
 
 // Use this macro to check if NVM3 Library plugin is included
 #define EMBER_AF_PLUGIN_NVM3
@@ -192,6 +204,9 @@
 
 // Use this macro to check if Thread Stack Library with mbed TLS support plugin is included
 #define EMBER_AF_PLUGIN_THREAD_MBEDTLS_STACK
+
+// Use this macro to check if UDP CLI plugin is included
+#define EMBER_AF_PLUGIN_UDP_CLI
 
 // Use this macro to check if UDP Debug plugin is included
 #define EMBER_AF_PLUGIN_UDP_DEBUG

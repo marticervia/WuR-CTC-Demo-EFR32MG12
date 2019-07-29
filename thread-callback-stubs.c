@@ -67,6 +67,7 @@ void emberAfPluginIdleSleepWakeUpCallback(uint32_t durationMs)
 }
 
 
+
 /** @brief Active
  *
  * This function is called by the Idle/Sleep plugin after idling.
@@ -99,6 +100,7 @@ void emberAfMarkApplicationBuffersCallback(void)
 void emberAfMainCallback(MAIN_FUNCTION_PARAMETERS)
 {
 }
+
 
 // The NVM3 Callback function.
 void halNvm3Callback(Ecode_t status)
@@ -141,30 +143,6 @@ void emberFreeMemoryForPacketHandler(void *objectRef)
 
 
 
-/**
- * @brief Application callback for emberSendDiagnosticQuery() and emberSendDiagnosticGet().
- *
- * @param status   Status of the query result.
- *
- * @param remoteAddress   The remote address that sent the answer.
- *
- * @param payload   The returned payload.
- *
- * @param payloadLength The returned payload length.
- */
-void emberDiagnosticAnswerHandler(EmberStatus status,
-                                  const EmberIpv6Address *remoteAddress,
-                                  const uint8_t *payload,
-                                  uint16_t payloadLength)
-{
-#if defined(EMBER_AF_PLUGIN_NCP_LIBRARY) && defined(EMBER_AF_PLUGIN_THREAD_TEST_HARNESS_CLI)
-  extern void emberDiagnosticAnswerHandlerTth(EmberStatus status,
-                                              const EmberIpv6Address *remoteAddress,
-                                              const uint8_t *payload,
-                                              uint16_t payloadLength);
-  emberDiagnosticAnswerHandlerTth(status, remoteAddress, payload, payloadLength);
-#endif
-}
 
 
 /**
@@ -188,32 +166,6 @@ void emberDiagnosticAnswerHandler(EmberStatus status,
 bool emberBatteryLevelHandler(uint8_t *batteryLevel)
 {
   return false;
-}
-
-
-/** @brief  Application callback for emberSetVendorTlvs().
- *
- * @param status EMBER_SUCCESS if the supplied TLVs were valid and successfully
- * installed, EMBER_BAD_ARGUMENT otherwise. See ::emberSetVendorTlvs for validity
- * requirements.
- *
- * @param length The number of bytes in the supplied network data.
- */
-void emberSetVendorTlvsReturn(EmberStatus status, uint16_t length)
-{
-}
-
-
-/** @brief  The response to a management get request previous sent via
- * emberSendManagementGetRequest().
- */
-void emberManagementGetResponseHandler(EmberCoapStatus status,
-                                       EmberCoapCode code,
-                                       EmberCoapReadOptions *options,
-                                       uint8_t *payload,
-                                       uint16_t payloadLength,
-                                       EmberCoapResponseInfo *info)
-{
 }
 
 
@@ -1448,14 +1400,6 @@ void emberGetNetworkKeyInfoReturn(EmberStatus status,
 {
 }
 
-
-/** @brief Callback for a debug command.  Provides the result of
- * ::emberGetNodeStatus
- */
-void emberGetNodeStatusReturn(EmberStatus status,
-                              const EmberNetworkDebugParameters *parameters)
-{
-}
 
 
 /** @brief Callback for a debug command.  Provides the result of

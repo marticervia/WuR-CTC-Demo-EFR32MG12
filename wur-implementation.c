@@ -25,6 +25,8 @@
 #include EMBER_AF_API_ZCL_CORE
 
 #include "stack/ip/ip-address.h"
+#include "ook_wur.h"
+#include "i2c_wur.h"
 
 // WARNING: This sample application uses fixed network parameters and the well-
 // know sensor/sink network key as the master key.  This is done for
@@ -39,7 +41,7 @@
 // the border router sample application without need for modification.
 static const uint8_t preferredChannel = 19;
 static const uint8_t networkId[EMBER_NETWORK_ID_SIZE] = "precommissioned";
-static const EmberPanId panId = 0x1075;
+static const EmberPanId panId = 0x1076;
 static const EmberIpv6Prefix ulaPrefix = {
   { 0xFD, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
 };
@@ -306,6 +308,80 @@ void ezModeEventHandler(void)
 {
   emberEventControlSetInactive(ezModeEventControl);
   emberZclStartEzMode();
+}
+
+
+/* wur related ahndlers */
+
+static uint32_t ook_frame_timestamp = 0;
+static uint32_t i2c_frame_timestamp = 0;
+
+
+void WuRInitApp(void){
+	emberAfCorePrintln("----------- Starting OOK WuR interface! -----------");
+	ook_wur_init();
+	emberAfCorePrintln("----------- Started OOK WuR interface! -----------");
+
+	emberAfCorePrintln("----------- Starting i2c WuR interface! -----------");
+	wur_i2c_init();
+	emberAfCorePrintln("----------- Started i2c WuR interface! -----------");
+}
+
+void WuRSystemTick(void){
+	//TODO: implement me
+}
+
+void WuRAppTick(void){
+
+	uint32_t current_timestamp = halCommonGetInt32uMillisecondTick();
+	uint16_t wur_addr;
+	uint8_t dataFrame[] = DEFAULT_WUR_FRAME;
+	//run each second
+	if(100 <= elapsedTimeInt32u(ook_frame_timestamp, current_timestamp)){
+		emberAfCorePrintln("[%d]: Preparing OOK frame.", current_timestamp);
+		uint16_t dest = 0x0555;
+		int32_t res = ook_wur_data(dest, &dataFrame[3], DEFAULT_WUR_LEN - 3, false);
+		if(res == 0){
+			emberAfCorePrintln("[%d]: Launched OOK frame with res %d.", current_timestamp, res);
+			ook_frame_timestamp = current_timestamp;
+		}else{
+			emberAfCorePrintln("[%d]: Failed to launch OOK frame with res %d.", current_timestamp, res);
+			ook_frame_timestamp = current_timestamp;
+		}
+	}
+
+	if(1000 <= elapsedTimeInt32u(i2c_frame_timestamp, current_timestamp)){
+		int32_t res = wur_get_address(&wur_addr);
+		if(res == 0){
+			emberAfCorePrintln("[%d]: Got WuR Addr 0x%02x.", current_timestamp, wur_addr);
+			i2c_frame_timestamp = current_timestamp;
+		}else{
+			emberAfCorePrintln("[%d]: Failed to get WuR address with res %d.", current_timestamp, res);
+			i2c_frame_timestamp = current_timestamp;
+		}
+	}
+}
+
+
+void WuRWakeDevice(EmberCoapCode code,
+                                         uint8_t *uri,
+                                         EmberCoapReadOptions *options,
+                                         const uint8_t *payload,
+                                         uint16_t payloadLength,
+                                         const EmberCoapRequestInfo *info){
+
+	emberCoapRespondWithCode(info, EMBER_COAP_CODE_501_NOT_IMPLEMENTED);
+
+}
+
+void WuRRequestDevice (EmberCoapCode code,
+                                         uint8_t *uri,
+                                         EmberCoapReadOptions *options,
+                                         const uint8_t *payload,
+                                         uint16_t payloadLength,
+                                         const EmberCoapRequestInfo *info){
+	emberCoapRespondWithCode(info, EMBER_COAP_CODE_501_NOT_IMPLEMENTED);
+
 }
 
 void stateEventHandler(void)

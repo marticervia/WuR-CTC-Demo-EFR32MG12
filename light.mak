@@ -74,17 +74,22 @@ SOURCE_FILES = \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/radio/rail_lib/plugin/coexistence/protocol/ieee802154/coulomb-counter-802154.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/address-configuration-debug/address-configuration-debug.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/cli/cli.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/coap-cli/coap-cli.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/coap-dispatch/coap-dispatch.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/debug-print/debug-print.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/dhcp-client/dhcp-client.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/dtls-auth-params/dtls-auth-params.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/dtls-auth-params/sample-dotdot-certificates.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/heartbeat/heartbeat.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/icmp-cli/icmp-cli.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/icmp-debug/icmp-debug.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/idle-sleep/idle-sleep.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/main/main.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/network-diagnostics-cli/network-diagnostics-cli.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/network-management-cli/network-management-cli.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/scan-debug/scan-debug.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/slaac-client/slaac-client.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/udp-cli/udp-cli.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/udp-debug/udp-debug.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/version-debug/version-debug.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/thread/plugin/zcl/basic-server/basic-server.c \
@@ -121,6 +126,7 @@ SOURCE_FILES = \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/util/serial/command-interpreter2-util.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/app/util/serial/command-interpreter2.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/config/ember-ip-configuration.c \
+  ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/protocol/thread/stack/ip/network-diagnostics.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/plugin/plugin-afv6/eeprom/eeprom-print.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/plugin/plugin-common/eeprom/eeprom-cli.c \
   ../../../sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/util/plugin/plugin-common/eeprom/eeprom.c \

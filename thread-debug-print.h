@@ -67,6 +67,25 @@
 #endif //defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_ZCL_CORE_CLI)
 
 
+// Generated functions for use within plugin ICMP CLI
+#if defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_ICMP_CLI)
+#define emberAfPluginIcmpCliPrint(...) emberAfPrint(EMBER_AF_PRINT_PLUGIN_ICMP_CLI, __VA_ARGS__)
+#define emberAfPluginIcmpCliPrintln(...) emberAfPrintln(EMBER_AF_PRINT_PLUGIN_ICMP_CLI,  __VA_ARGS__)
+// Blocking IO is enabled for all serial ports, therefore flush calls are unnecessary.
+#define emberAfPluginIcmpCliFlush()
+#define emberAfPluginIcmpCliDebugExec(x) if ( emberAfPrintEnabled(EMBER_AF_PRINT_PLUGIN_ICMP_CLI) ) { x; }
+#define emberAfPluginIcmpCliPrintBuffer(buffer, len, withSpace) emberAfPrintBuffer(EMBER_AF_PRINT_PLUGIN_ICMP_CLI, (buffer), (len), (withSpace))
+#define emberAfPluginIcmpCliPrintString(buffer) emberAfPrintString(EMBER_AF_PRINT_PLUGIN_ICMP_CLI, (buffer))
+#else
+#define emberAfPluginIcmpCliPrint(...)
+#define emberAfPluginIcmpCliPrintln(...)
+#define emberAfPluginIcmpCliFlush()
+#define emberAfPluginIcmpCliDebugExec(x)
+#define emberAfPluginIcmpCliPrintBuffer(buffer, len, withSpace)
+#define emberAfPluginIcmpCliPrintString(buffer)
+#endif //defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_ICMP_CLI)
+
+
 // Generated functions for use within plugin Scan Debug
 #if defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_SCAN_DEBUG)
 #define emberAfPluginScanDebugPrint(...) emberAfPrint(EMBER_AF_PRINT_PLUGIN_SCAN_DEBUG, __VA_ARGS__)
@@ -257,6 +276,25 @@
 #endif //defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_LED)
 
 
+// Generated functions for use within plugin UDP CLI
+#if defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_UDP_CLI)
+#define emberAfPluginUdpCliPrint(...) emberAfPrint(EMBER_AF_PRINT_PLUGIN_UDP_CLI, __VA_ARGS__)
+#define emberAfPluginUdpCliPrintln(...) emberAfPrintln(EMBER_AF_PRINT_PLUGIN_UDP_CLI,  __VA_ARGS__)
+// Blocking IO is enabled for all serial ports, therefore flush calls are unnecessary.
+#define emberAfPluginUdpCliFlush()
+#define emberAfPluginUdpCliDebugExec(x) if ( emberAfPrintEnabled(EMBER_AF_PRINT_PLUGIN_UDP_CLI) ) { x; }
+#define emberAfPluginUdpCliPrintBuffer(buffer, len, withSpace) emberAfPrintBuffer(EMBER_AF_PRINT_PLUGIN_UDP_CLI, (buffer), (len), (withSpace))
+#define emberAfPluginUdpCliPrintString(buffer) emberAfPrintString(EMBER_AF_PRINT_PLUGIN_UDP_CLI, (buffer))
+#else
+#define emberAfPluginUdpCliPrint(...)
+#define emberAfPluginUdpCliPrintln(...)
+#define emberAfPluginUdpCliFlush()
+#define emberAfPluginUdpCliDebugExec(x)
+#define emberAfPluginUdpCliPrintBuffer(buffer, len, withSpace)
+#define emberAfPluginUdpCliPrintString(buffer)
+#endif //defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_UDP_CLI)
+
+
 // Generated functions for use within plugin Buzzer
 #if defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_BUZZER)
 #define emberAfPluginBuzzerPrint(...) emberAfPrint(EMBER_AF_PRINT_PLUGIN_BUZZER, __VA_ARGS__)
@@ -409,6 +447,25 @@
 #endif //defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_SLAAC_CLIENT)
 
 
+// Generated functions for use within plugin Network Diagnostics CLI
+#if defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_NETWORK_DIAGNOSTICS_CLI)
+#define emberAfPluginNetworkDiagnosticsCliPrint(...) emberAfPrint(EMBER_AF_PRINT_PLUGIN_NETWORK_DIAGNOSTICS_CLI, __VA_ARGS__)
+#define emberAfPluginNetworkDiagnosticsCliPrintln(...) emberAfPrintln(EMBER_AF_PRINT_PLUGIN_NETWORK_DIAGNOSTICS_CLI,  __VA_ARGS__)
+// Blocking IO is enabled for all serial ports, therefore flush calls are unnecessary.
+#define emberAfPluginNetworkDiagnosticsCliFlush()
+#define emberAfPluginNetworkDiagnosticsCliDebugExec(x) if ( emberAfPrintEnabled(EMBER_AF_PRINT_PLUGIN_NETWORK_DIAGNOSTICS_CLI) ) { x; }
+#define emberAfPluginNetworkDiagnosticsCliPrintBuffer(buffer, len, withSpace) emberAfPrintBuffer(EMBER_AF_PRINT_PLUGIN_NETWORK_DIAGNOSTICS_CLI, (buffer), (len), (withSpace))
+#define emberAfPluginNetworkDiagnosticsCliPrintString(buffer) emberAfPrintString(EMBER_AF_PRINT_PLUGIN_NETWORK_DIAGNOSTICS_CLI, (buffer))
+#else
+#define emberAfPluginNetworkDiagnosticsCliPrint(...)
+#define emberAfPluginNetworkDiagnosticsCliPrintln(...)
+#define emberAfPluginNetworkDiagnosticsCliFlush()
+#define emberAfPluginNetworkDiagnosticsCliDebugExec(x)
+#define emberAfPluginNetworkDiagnosticsCliPrintBuffer(buffer, len, withSpace)
+#define emberAfPluginNetworkDiagnosticsCliPrintString(buffer)
+#endif //defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_NETWORK_DIAGNOSTICS_CLI)
+
+
 // Generated functions for use within plugin Scenes Server
 #if defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_SCENES_SERVER)
 #define emberAfPluginScenesServerPrint(...) emberAfPrint(EMBER_AF_PRINT_PLUGIN_SCENES_SERVER, __VA_ARGS__)
@@ -426,6 +483,25 @@
 #define emberAfPluginScenesServerPrintBuffer(buffer, len, withSpace)
 #define emberAfPluginScenesServerPrintString(buffer)
 #endif //defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_SCENES_SERVER)
+
+
+// Generated functions for use within plugin Network Management CLI
+#if defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_NETWORK_MANAGEMENT_CLI)
+#define emberAfPluginNetworkManagementCliPrint(...) emberAfPrint(EMBER_AF_PRINT_PLUGIN_NETWORK_MANAGEMENT_CLI, __VA_ARGS__)
+#define emberAfPluginNetworkManagementCliPrintln(...) emberAfPrintln(EMBER_AF_PRINT_PLUGIN_NETWORK_MANAGEMENT_CLI,  __VA_ARGS__)
+// Blocking IO is enabled for all serial ports, therefore flush calls are unnecessary.
+#define emberAfPluginNetworkManagementCliFlush()
+#define emberAfPluginNetworkManagementCliDebugExec(x) if ( emberAfPrintEnabled(EMBER_AF_PRINT_PLUGIN_NETWORK_MANAGEMENT_CLI) ) { x; }
+#define emberAfPluginNetworkManagementCliPrintBuffer(buffer, len, withSpace) emberAfPrintBuffer(EMBER_AF_PRINT_PLUGIN_NETWORK_MANAGEMENT_CLI, (buffer), (len), (withSpace))
+#define emberAfPluginNetworkManagementCliPrintString(buffer) emberAfPrintString(EMBER_AF_PRINT_PLUGIN_NETWORK_MANAGEMENT_CLI, (buffer))
+#else
+#define emberAfPluginNetworkManagementCliPrint(...)
+#define emberAfPluginNetworkManagementCliPrintln(...)
+#define emberAfPluginNetworkManagementCliFlush()
+#define emberAfPluginNetworkManagementCliDebugExec(x)
+#define emberAfPluginNetworkManagementCliPrintBuffer(buffer, len, withSpace)
+#define emberAfPluginNetworkManagementCliPrintString(buffer)
+#endif //defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_NETWORK_MANAGEMENT_CLI)
 
 
 // Generated functions for use within plugin Level Control Server
@@ -559,6 +635,25 @@
 #define emberAfPluginOtaBootloadStorageCorePrintBuffer(buffer, len, withSpace)
 #define emberAfPluginOtaBootloadStorageCorePrintString(buffer)
 #endif //defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_OTA_BOOTLOAD_STORAGE_CORE)
+
+
+// Generated functions for use within plugin CoAP CLI
+#if defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_COAP_CLI)
+#define emberAfPluginCoapCliPrint(...) emberAfPrint(EMBER_AF_PRINT_PLUGIN_COAP_CLI, __VA_ARGS__)
+#define emberAfPluginCoapCliPrintln(...) emberAfPrintln(EMBER_AF_PRINT_PLUGIN_COAP_CLI,  __VA_ARGS__)
+// Blocking IO is enabled for all serial ports, therefore flush calls are unnecessary.
+#define emberAfPluginCoapCliFlush()
+#define emberAfPluginCoapCliDebugExec(x) if ( emberAfPrintEnabled(EMBER_AF_PRINT_PLUGIN_COAP_CLI) ) { x; }
+#define emberAfPluginCoapCliPrintBuffer(buffer, len, withSpace) emberAfPrintBuffer(EMBER_AF_PRINT_PLUGIN_COAP_CLI, (buffer), (len), (withSpace))
+#define emberAfPluginCoapCliPrintString(buffer) emberAfPrintString(EMBER_AF_PRINT_PLUGIN_COAP_CLI, (buffer))
+#else
+#define emberAfPluginCoapCliPrint(...)
+#define emberAfPluginCoapCliPrintln(...)
+#define emberAfPluginCoapCliFlush()
+#define emberAfPluginCoapCliDebugExec(x)
+#define emberAfPluginCoapCliPrintBuffer(buffer, len, withSpace)
+#define emberAfPluginCoapCliPrintString(buffer)
+#endif //defined(EMBER_AF_PRINT_ENABLE) && defined(EMBER_AF_PRINT_PLUGIN_COAP_CLI)
 
 
 // Generated functions for use within plugin ZCL Core
