@@ -21,6 +21,25 @@
 #include "em_common.h"
 #include "rail_config.h"
 
+uint32_t RAILCb_CalcSymbolRate(RAIL_Handle_t railHandle)
+{
+  (void) railHandle;
+  return 0U;
+}
+
+uint32_t RAILCb_CalcBitRate(RAIL_Handle_t railHandle)
+{
+  (void) railHandle;
+  return 0U;
+}
+
+void RAILCb_ConfigFrameTypeLength(RAIL_Handle_t railHandle,
+                                  const RAIL_FrameType_t *frameType)
+{
+  (void) railHandle;
+  (void) frameType;
+}
+
 static const uint8_t irCalConfig[] = {
   25, 63, 1, 6, 4, 16, 1, 0, 0, 1, 1, 6, 0, 16, 39, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0
 };
@@ -94,8 +113,8 @@ const uint32_t OOK_WuR_modemConfigBase[] = {
   /*    1FF4 */ 0x00000002UL,
   /*    1FF8 */ (uint32_t) &phyInfo_0,
   /*    1FFC */ 0x00000000UL,
-  0x00020004UL, 0x00038201UL,
-  /*    0008 */ 0x0000003AUL,
+  0x00020004UL, 0x00028201UL,
+  /*    0008 */ 0x0000005BUL,
   0x00020018UL, 0x00000000UL,
   /*    001C */ 0x00000002UL,
   0x00070028UL, 0x00000000UL,
@@ -141,7 +160,7 @@ const uint32_t OOK_WuR_modemConfigBase[] = {
   0x00066050UL, 0x00FF1320UL,
   /*    6054 */ 0x00000C40UL,
   /*    6058 */ 0x00000032UL,
-  /*    605C */ 0x000E0012UL,
+  /*    605C */ 0x000E0011UL,
   /*    6060 */ 0x00000003UL,
   /*    6064 */ 0x00000000UL,
   0x000C6078UL, 0x15A00714UL,

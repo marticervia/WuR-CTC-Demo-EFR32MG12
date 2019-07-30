@@ -41,8 +41,12 @@ void ook_wur_init(void){
 ook_tx_errors_t ook_wur_wake(uint16_t dest, uint16_t ms_wake){
 	uint8_t wake_frame[5] = {0};
 
-	wake_frame[0] = dest & 0xFF;
-	wake_frame[1] = (dest & 0xF00) >> 4;
+
+	emberAfCorePrintln("Sending OOK wake frame to addr %02X .", dest);
+
+	wake_frame[0] = (uint8_t)(dest & 0x00FF);
+	wake_frame[1] = (uint8_t)((dest & 0x0F00) >> 4);
+
 	wake_frame[1] |= (DATA_FLAG << 1) | ook_wur_ctxt.tx_current_seq;
 	wake_frame[2] = WUR_WAKE_LEN;
 	ms_wake = HTONS(ms_wake);
@@ -59,14 +63,17 @@ ook_tx_errors_t ook_wur_data(uint16_t dest, uint8_t* data, uint8_t len, bool ack
 		return OOK_WUR_TX_ERROR_FRAME_FORMAT;
 	}
 
-	data_frame[0] = dest & 0xFF;
-	data_frame[1] = (dest & 0xF00) >> 4;
+	emberAfCorePrintln("Sending OOK data frame to addr %02X .", dest);
+
+	data_frame[0] = (uint8_t)(dest & 0x00FF);
+	data_frame[1] = (uint8_t)((dest & 0x0F00) >> 4);
 
 	/* set type and seq flag */
 	flags |= DATA_FLAG;
 	if(ack){
 		flags |= ACK_FLAG;
 	}
+
 
 	data_frame[1] |= (flags << 1) | ook_wur_ctxt.tx_current_seq;
 	data_frame[2] = len;
@@ -104,6 +111,7 @@ ook_tx_errors_t _ook_wur_transmit(uint8_t* data, uint8_t len){
 void ook_wur_callback(ook_tx_errors_t dest){
 	ook_wur_ctxt.tx_status = OOK_WUR_TX_STATUS_IDLE;
 	ook_wur_ctxt.tx_result = dest;
+	ook_wur_ctxt.tx_current_seq ^= 1;
 }
 
 

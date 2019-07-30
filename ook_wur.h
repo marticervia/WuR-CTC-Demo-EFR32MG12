@@ -9,7 +9,7 @@
 #define OOK_WUR_H_
 
 #define WUR_WAKE_LEN 2
-#define WUR_HEADER_LEN 3
+#define WUR_HEADER_LEN 3 //3 bytes plus CRC
 #define WUR_MAX_DATA_LEN 89
 
 #define WAKE_FLAG 0b001
