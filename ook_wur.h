@@ -47,9 +47,9 @@ typedef void (*ook_tx_callback_t)(ook_tx_errors_t tx_status);
 
 void ook_wur_init(void);
 
-ook_tx_errors_t ook_wur_wake(uint16_t dest, uint16_t ms_wake);
-ook_tx_errors_t ook_wur_data(uint16_t dest, uint8_t* data, uint8_t len, bool ack);
-ook_tx_errors_t ook_wur_ack(uint16_t dest);
+ook_tx_errors_t ook_wur_wake(uint16_t dest, uint16_t ms_wake, uint8_t seq);
+ook_tx_errors_t ook_wur_data(uint16_t dest, uint8_t* data, uint8_t len, bool ack, uint8_t seq);
+ook_tx_errors_t ook_wur_ack(uint16_t dest, uint8_t seq);
 void ook_wur_set_callback(ook_tx_callback_t tx_status_cb);
 
 /* for use in ook_com.c*/

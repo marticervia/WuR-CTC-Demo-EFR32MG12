@@ -23,13 +23,13 @@ typedef enum wurx_states{
 typedef struct wur_status{
 	wurx_states_t wur_status;
 	uint8_t wur_frame_len;
-}wur_status_t;
+}i2c_wur_status_t;
 
 
 void wur_i2c_init(void);
 uint8_t wur_set_address(uint16_t addr);
 uint8_t wur_get_address(uint16_t* addr);
-uint8_t wur_get_status(wur_status_t* status);
+uint8_t wur_get_status(i2c_wur_status_t* status);
 uint8_t wur_get_frame(uint8_t* buffer, uint8_t len);
 
 

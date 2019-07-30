@@ -44,7 +44,6 @@ void emberAfInitCallback(void)
 void emberAfTickCallback(void)
 {
 	WuRAppTick();
-	WuRSystemTick();
 }
 
 

@@ -24,9 +24,11 @@
 #endif
 #include EMBER_AF_API_ZCL_CORE
 
+#include "wur-implementation.h"
 #include "stack/ip/ip-address.h"
 #include "ook_wur.h"
 #include "i2c_wur.h"
+#include "wur.h"
 
 // WARNING: This sample application uses fixed network parameters and the well-
 // know sensor/sink network key as the master key.  This is done for
@@ -310,79 +312,239 @@ void ezModeEventHandler(void)
   emberZclStartEzMode();
 }
 
+static app_ctxt_t app_ctxt;
+/* wur related handlers */
 
-/* wur related ahndlers */
+void WuRWakeDevice(EmberCoapCode code,
+					 uint8_t *uri,
+					 EmberCoapReadOptions *options,
+					 const uint8_t *payload,
+					 uint16_t payloadLength,
+					 const EmberCoapRequestInfo *info){
 
-static uint32_t ook_frame_timestamp = 0;
-static uint32_t i2c_frame_timestamp = 0;
+	uint32_t current_timestamp = halCommonGetInt32uMillisecondTick();
+	emberAfCorePrintln("[%d]: Got Wake Device REQ!", current_timestamp);
+
+	if(app_ctxt.app_status != APP_IDLE){
+		emberAfCorePrintln("[%d]: Refusing Wake Device REQ, already busy!", current_timestamp);
+		emberCoapRespondWithCode(info, EMBER_COAP_CODE_412_PRECONDITION_FAILED);
+		return;
+	}
+
+	if((payloadLength > MAX_APP_DATA_BUF) || (payloadLength < MIN_WAKE_REQ_LEN)){
+		emberAfCorePrintln("[%d]: Payload of %d bytes disallowed for WAKE!", current_timestamp, payloadLength);
+		emberCoapRespondWithCode(info, EMBER_COAP_CODE_400_BAD_REQUEST);
+		return;
+	}
+
+	/* retrieve data*/
+	memcpy(app_ctxt.app_data_buf, payload, payloadLength);
+	app_ctxt.app_data_buf_len = payloadLength;
+
+	/* change status and notify main loop */
+	emberSaveRequestInfo(info, &(app_ctxt.app_request_info));
+	app_ctxt.app_status = APP_SENDING_WAKE;
+}
+
+void WuRRequestDevice(EmberCoapCode code,
+						 uint8_t *uri,
+						 EmberCoapReadOptions *options,
+						 const uint8_t *payload,
+						 uint16_t payloadLength,
+						 const EmberCoapRequestInfo *info){
+	uint32_t current_timestamp = halCommonGetInt32uMillisecondTick();
+	emberAfCorePrintln("[%d]: Got Data Device REQ!", current_timestamp);
+
+	if(app_ctxt.app_status != APP_IDLE){
+		emberAfCorePrintln("[%d]: Refusing DATA to Device REQ, already busy!", current_timestamp);
+		emberCoapRespondWithCode(info, EMBER_COAP_CODE_412_PRECONDITION_FAILED);
+		return;
+	}
+
+	if((payloadLength > MAX_APP_DATA_BUF) || (payloadLength < MIN_DATA_REQ_LEN)){
+		emberAfCorePrintln("[%d]: Payload of %d bytes disallowed for DATA!", current_timestamp, payloadLength);
+		emberCoapRespondWithCode(info, EMBER_COAP_CODE_400_BAD_REQUEST);
+		return;
+	}
+
+	/* retrieve data*/
+	memcpy(app_ctxt.app_data_buf, payload, payloadLength);
+	app_ctxt.app_data_buf_len = payloadLength;
+
+	/* change status and notify main loop */
+	emberSaveRequestInfo(info, &(app_ctxt.app_request_info));
+	app_ctxt.app_status = APP_SENDING_DATA;
+}
+
+
+static inline uint16_t _getuint16t(uint8_t* buff){
+	uint16_t wur_addr;
+	memcpy(&wur_addr, buff, sizeof(uint16_t));
+	wur_addr = NTOHS(wur_addr);
+	return wur_addr;
+}
+
+static inline void _setint16t(uint8_t* buff, int16_t num){
+	num = HTONS(num);
+	memcpy(buff, &num, sizeof(int16_t));
+}
+
+static void _respondWithError(app_trans_result_t res){
+	const uint8_t res_payload[2] = {0};
+	_setint16t((uint8_t*) res_payload, res);
+	 emberCoapRespondWithPayload(&app_ctxt.app_request_info, EMBER_COAP_CODE_500_INTERNAL_SERVER_ERROR,
+			res_payload, 2);
+}
+
+static void _respondWithPayload(uint8_t* payload, uint8_t payload_len){
+	if(payload_len > 0){
+		 emberCoapRespondWithPayload(&app_ctxt.app_request_info, EMBER_COAP_CODE_203_VALID,
+				 &payload[WUR_PAYLOAD_OFFSET], payload_len - WUR_PAYLOAD_OFFSET);
+	}
+	emberCoapRespondWithCode(&app_ctxt.app_request_info, EMBER_COAP_CODE_203_VALID);
+}
+
+
+static void _printBuffer(uint8_t* res, uint8_t res_length){
+	uint16_t i;
+	emberAfCorePrintln("Buffer is:");
+
+	for(i=0; i < (res_length -1); i++){
+		emberAfCorePrint("%01X:", res[i]);
+	}
+	emberAfCorePrintln("%01X", res[i]);
+}
+
+static void _wur_tx_cb(wur_tx_res_t tx_res){
+	uint32_t current_timestamp = halCommonGetInt32uMillisecondTick();
+
+	switch(app_ctxt.app_status){
+		case APP_WAITING_WAKE:
+		case APP_WAITING_DATA:
+			emberAfCorePrintln("[%d]: Received ACK!", current_timestamp);
+			if(tx_res == WUR_ERROR_TX_OK){
+				if(app_ctxt.app_status == APP_WAITING_WAKE){
+					emberAfCorePrintln("[%d]: Going to respond to Wake!", current_timestamp);
+					app_ctxt.app_status = APP_RESPONDING_WAKE;
+
+				}
+				else{
+					emberAfCorePrintln("[%d]: Going to respond to Data!", current_timestamp);
+					app_ctxt.app_status = APP_RESPONDING_DATA;
+				}
+				memset(app_ctxt.app_data_buf, 0, MAX_APP_DATA_BUF);
+				app_ctxt.app_data_buf_len = 0;
+			}
+			else if((tx_res ==  WUR_ERROR_TX_ACK_DATA_TIMEOUT)
+					|| (tx_res ==  WUR_ERROR_TX_ACK_WAKE_TIMEOUT)){
+				emberAfCorePrintln("[%d]: Received Timeout, going to idle!", current_timestamp);
+				app_ctxt.app_status = APP_IDLE;
+				_respondWithError(APP_TRANS_KO_TIMEOUT);
+			}
+			else{
+				emberAfCorePrintln("[%d]: Received Error, going to idle!", current_timestamp);
+				app_ctxt.app_status = APP_IDLE;
+				_respondWithError(APP_TRANS_KO_TIMEOUT);
+			}
+			break;
+		default:
+			emberAfCorePrintln("[%d]: Received ACK while not waiting. Is this an error?!", current_timestamp);
+			break;
+	}
+}
+
+
+static void _wur_rx_cb(wur_rx_res_t rx_res, uint8_t* rx_bytes, uint8_t rx_bytes_len){
+	uint32_t current_timestamp = halCommonGetInt32uMillisecondTick();
+
+	emberAfCorePrintln("[%d]: Received response with status %d!", current_timestamp, rx_res);
+	_printBuffer(rx_bytes, rx_bytes_len);
+	if(rx_bytes_len > MAX_APP_DATA_BUF){
+		emberAfCorePrintln("[%d]: Received response above max frame size %d!", current_timestamp);
+	}
+	memcpy(app_ctxt.app_data_buf, rx_bytes, rx_bytes_len);
+	app_ctxt.app_data_buf_len = rx_bytes_len;
+}
 
 
 void WuRInitApp(void){
-	emberAfCorePrintln("----------- Starting OOK WuR interface! -----------");
-	ook_wur_init();
-	emberAfCorePrintln("----------- Started OOK WuR interface! -----------");
+	wur_init(WUR_ADDR);
 
-	emberAfCorePrintln("----------- Starting i2c WuR interface! -----------");
-	wur_i2c_init();
-	emberAfCorePrintln("----------- Started i2c WuR interface! -----------");
+	memset(&app_ctxt.app_request_info, 0, sizeof(EmberCoapRequestInfo));
+	app_ctxt.app_status = APP_IDLE;
+	memset(app_ctxt.app_data_buf, 0, MAX_APP_DATA_BUF);
+	app_ctxt.app_data_buf_len = 0;
+	wur_set_tx_cb(_wur_tx_cb);
+	wur_set_rx_cb(_wur_rx_cb);
 }
 
-void WuRSystemTick(void){
-	//TODO: implement me
+void WuRSystemTick(uint32_t timestamp){
+	wur_tick(timestamp);
 }
+
 
 void WuRAppTick(void){
 
 	uint32_t current_timestamp = halCommonGetInt32uMillisecondTick();
-	uint16_t wur_addr;
-	uint8_t dataFrame[] = DEFAULT_WUR_FRAME;
-	//run each second
-	if(100 <= elapsedTimeInt32u(ook_frame_timestamp, current_timestamp)){
-		emberAfCorePrintln("[%d]: Preparing OOK frame.", current_timestamp);
-		uint16_t dest = 0x0555;
-		int32_t res = ook_wur_data(dest, &dataFrame[3], DEFAULT_WUR_LEN - 3, false);
-		if(res == 0){
-			emberAfCorePrintln("[%d]: Launched OOK frame with res %d.", current_timestamp, res);
-			ook_frame_timestamp = current_timestamp;
-		}else{
-			emberAfCorePrintln("[%d]: Failed to launch OOK frame with res %d.", current_timestamp, res);
-			ook_frame_timestamp = current_timestamp;
-		}
+	uint16_t wur_addr, wake_ms;
+	wur_tx_res_t tx_res;
+
+	WuRSystemTick(current_timestamp);
+
+	switch(app_ctxt.app_status){
+		case APP_IDLE:
+			if(current_timestamp % 10000 == 0){
+				emberAfCorePrintln("[%d]: Device IDLE", current_timestamp);
+			}
+			break;
+		case APP_SENDING_WAKE:
+			emberAfCorePrintln("[%d]: Sending Wake Device REQ!", current_timestamp);
+			wur_addr = _getuint16t(app_ctxt.app_data_buf);
+			wake_ms = _getuint16t(&app_ctxt.app_data_buf[PAYLOAD_OFFSET]);
+
+			tx_res = wur_send_wake(wur_addr, wake_ms);
+			if(tx_res != WUR_ERROR_TX_OK){
+				emberAfCorePrintln("[%d]: Failure to send Wake Device REQ!", current_timestamp);
+				_respondWithError(APP_TRANS_KO_TX);
+				app_ctxt.app_status = APP_IDLE;
+			}
+			app_ctxt.app_status = APP_WAITING_WAKE;
+			break;
+		case APP_SENDING_DATA:
+			emberAfCorePrintln("[%d]: Sending Data to Device REQ!", current_timestamp);
+			wur_addr = _getuint16t(app_ctxt.app_data_buf);
+
+			tx_res = wur_send_data(wur_addr, &app_ctxt.app_data_buf[PAYLOAD_OFFSET], app_ctxt.app_data_buf_len - PAYLOAD_OFFSET, false, -1);
+			if(tx_res != WUR_ERROR_TX_OK){
+				emberAfCorePrintln("[%d]: Failure to send Data to Device REQ!", current_timestamp);
+				_respondWithError(APP_TRANS_KO_TX);
+				app_ctxt.app_status = APP_IDLE;
+			}
+			app_ctxt.app_status = APP_WAITING_DATA;
+			break;
+		case APP_WAITING_WAKE:
+		case APP_WAITING_DATA:
+			/* wait for the OK/KO Tx callback to change the state*/
+			if(current_timestamp % 500 == 0){
+				emberAfCorePrintln("[%d]: Device Waiting ACK", current_timestamp);
+			}
+			break;
+		case APP_RESPONDING_WAKE:
+			emberAfCorePrintln("[%d]: Sending Response to Wake Device REQ!", current_timestamp);
+			_respondWithPayload(NULL, 0);
+			app_ctxt.app_status = APP_IDLE;
+			break;
+		case APP_RESPONDING_DATA:
+			emberAfCorePrintln("[%d]: Sending Response to Data to Device REQ!", current_timestamp);
+			_respondWithPayload(app_ctxt.app_data_buf, app_ctxt.app_data_buf_len );
+			app_ctxt.app_status = APP_IDLE;
+			break;
+		default:
+			break;
 	}
-
-	if(1000 <= elapsedTimeInt32u(i2c_frame_timestamp, current_timestamp)){
-		int32_t res = wur_get_address(&wur_addr);
-		if(res == 0){
-			emberAfCorePrintln("[%d]: Got WuR Addr 0x%02x.", current_timestamp, wur_addr);
-			i2c_frame_timestamp = current_timestamp;
-		}else{
-			emberAfCorePrintln("[%d]: Failed to get WuR address with res %d.", current_timestamp, res);
-			i2c_frame_timestamp = current_timestamp;
-		}
-	}
 }
 
 
-void WuRWakeDevice(EmberCoapCode code,
-                                         uint8_t *uri,
-                                         EmberCoapReadOptions *options,
-                                         const uint8_t *payload,
-                                         uint16_t payloadLength,
-                                         const EmberCoapRequestInfo *info){
-
-	emberCoapRespondWithCode(info, EMBER_COAP_CODE_501_NOT_IMPLEMENTED);
-
-}
-
-void WuRRequestDevice (EmberCoapCode code,
-                                         uint8_t *uri,
-                                         EmberCoapReadOptions *options,
-                                         const uint8_t *payload,
-                                         uint16_t payloadLength,
-                                         const EmberCoapRequestInfo *info){
-	emberCoapRespondWithCode(info, EMBER_COAP_CODE_501_NOT_IMPLEMENTED);
-
-}
 
 void stateEventHandler(void)
 {

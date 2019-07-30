@@ -68,7 +68,7 @@ uint8_t wur_get_address(uint16_t* addr){
 	return WUR_OK;
 }
 
-uint8_t wur_get_status(wur_status_t* status){
+uint8_t wur_get_status(i2c_wur_status_t* status){
 	uint8_t statusBuf[2] = {0};
 	uint8_t reqByte = 0;
 	I2C_TransferReturn_TypeDef trans_result;
