@@ -421,7 +421,6 @@ static void _wur_tx_cb(wur_tx_res_t tx_res){
 	switch(app_ctxt.app_status){
 		case APP_WAITING_WAKE:
 		case APP_WAITING_DATA:
-			emberAfCorePrintln("[%d]: Received ACK!", current_timestamp);
 			if(tx_res == WUR_ERROR_TX_OK){
 				if(app_ctxt.app_status == APP_WAITING_WAKE){
 					emberAfCorePrintln("[%d]: Going to respond to Wake!", current_timestamp);
@@ -478,18 +477,13 @@ void WuRInitApp(void){
 	wur_set_rx_cb(_wur_rx_cb);
 }
 
-void WuRSystemTick(uint32_t timestamp){
-	wur_tick(timestamp);
-}
-
-
 void WuRAppTick(void){
 
 	uint32_t current_timestamp = halCommonGetInt32uMillisecondTick();
 	uint16_t wur_addr, wake_ms;
 	wur_tx_res_t tx_res;
 
-	WuRSystemTick(current_timestamp);
+	wur_tick(current_timestamp);
 
 	switch(app_ctxt.app_status){
 		case APP_IDLE:

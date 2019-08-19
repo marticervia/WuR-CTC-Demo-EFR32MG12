@@ -56,19 +56,19 @@ void wur_init(uint16_t addr){
 void wur_tick(uint32_t systick){
 
 	if(wur_context.wur_status == WUR_STATUS_WAIT_DATA_ACK){
+		if(systick - wur_context.tx_timestamp > WUR_DATA_TIMEOUT){
+			emberAfCorePrintln("Timeout to ack last data frame");
+			if(wur_context.tx_cb){
+				wur_context.wur_status = WUR_STATUS_IDLE;
+				wur_context.tx_cb(WUR_ERROR_TX_ACK_DATA_TIMEOUT);
+			}
+		}
+	}else if(wur_context.wur_status == WUR_STATUS_WAIT_WAKE_ACK){
 		if(systick - wur_context.tx_timestamp > WUR_WAKE_TIMEOUT){
 			emberAfCorePrintln("Timeout to ack last wake frame");
 			if(wur_context.tx_cb){
 				wur_context.wur_status = WUR_STATUS_IDLE;
 				wur_context.tx_cb(WUR_ERROR_TX_ACK_WAKE_TIMEOUT);
-			}
-		}
-	}else if(wur_context.wur_status == WUR_STATUS_WAIT_WAKE_ACK){
-		if(systick - wur_context.tx_timestamp > WUR_DATA_TIMEOUT){
-			emberAfCorePrintln("Timeout to ack last dataframe");
-			if(wur_context.tx_cb){
-				wur_context.wur_status = WUR_STATUS_IDLE;
-				wur_context.tx_cb(WUR_ERROR_TX_ACK_DATA_TIMEOUT);
 			}
 		}
 	}
@@ -152,11 +152,13 @@ wur_tx_res_t wur_send_wake(uint16_t addr, uint16_t ms){
 	}
 
 	tx_res = ook_wur_wake(addr, ms, wur_context.expected_seq_num);
-	if(tx_res != OOK_WUR_TX_ERROR_QUEUED){
+	if(tx_res != OOK_WUR_TX_ERROR_SUCCESS){
 		emberAfCorePrintln("Warning: failed to start WAKE transmission!");
+		wur_context.wur_status = WUR_STATUS_IDLE;
 		return WUR_ERROR_TX_FAILED;
 	}
 
+	wur_context.tx_timestamp = halCommonGetInt32uMillisecondTick();
 	wur_context.wur_status = WUR_STATUS_WAIT_WAKE_ACK;
 
 	return WUR_ERROR_TX_OK;
@@ -174,11 +176,13 @@ wur_tx_res_t wur_send_data(uint16_t addr, uint8_t* data, uint8_t data_len, boole
 	}
 
 	tx_res = ook_wur_data(addr, data, data_len, is_ack, ack_seq_num);
-	if(tx_res != OOK_WUR_TX_ERROR_QUEUED){
+	if(tx_res != OOK_WUR_TX_ERROR_SUCCESS){
 		emberAfCorePrintln("Warning: failed to start DATA transmission!");
+		wur_context.wur_status = WUR_STATUS_IDLE;
 		return WUR_ERROR_TX_FAILED;
 	}
 
+	wur_context.tx_timestamp = halCommonGetInt32uMillisecondTick();
 	wur_context.wur_status = WUR_STATUS_WAIT_DATA_ACK;
 
 	return WUR_ERROR_TX_OK;
