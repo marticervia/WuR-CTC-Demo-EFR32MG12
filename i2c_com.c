@@ -30,11 +30,11 @@ void i2c_com_init(void){
 	//prepare wake_i2c in
 	GPIO_PinModeSet(WuR_I2C_WAKE_PORT, WuR_I2C_WAKE_LOC, gpioModePushPull, 0);
 
-
 	I2C0->ROUTEPEN = I2C_ROUTEPEN_SDAPEN | I2C_ROUTEPEN_SCLPEN;
 	I2C0->ROUTELOC0 = (I2C0->ROUTELOC0 & (~_I2C_ROUTELOC0_SDALOC_MASK)) | I2C_ROUTELOC0_SDALOC_LOC16;
 	I2C0->ROUTELOC0 = (I2C0->ROUTELOC0 & (~_I2C_ROUTELOC0_SCLLOC_MASK)) | I2C_ROUTELOC0_SCLLOC_LOC14;
 
+	i2cInit.freq = 550000;
 	I2C_Init(I2C0, &i2cInit);
 
 }
@@ -73,14 +73,13 @@ I2C_TransferReturn_TypeDef i2c_com_write_register(uint8_t i2c_slave_addr, uint8_
     GPIO_PinOutSet(WuR_I2C_WAKE_PORT, WuR_I2C_WAKE_LOC);
     USTIMER_Delay(10);
     GPIO_PinOutClear(WuR_I2C_WAKE_PORT, WuR_I2C_WAKE_LOC);
-    USTIMER_Delay(50);
 
 	i2c_trans_res = _i2c_com_master_transfer(i2c_slave_addr, I2C_FLAG_WRITE, reg_buffer,1, NULL, 0);
 	if(i2c_trans_res != i2cTransferDone){
 		return -8;
 	}
 
-    USTIMER_Delay(100);
+    USTIMER_Delay(25);
 
 	return _i2c_com_master_transfer(i2c_slave_addr, I2C_FLAG_WRITE, write_buf, write_buf_len, NULL, 0);
 }
@@ -94,14 +93,13 @@ I2C_TransferReturn_TypeDef i2c_com_read_register(uint8_t i2c_slave_addr, uint8_t
     GPIO_PinOutSet(WuR_I2C_WAKE_PORT, WuR_I2C_WAKE_LOC);
     USTIMER_Delay(10);
     GPIO_PinOutClear(WuR_I2C_WAKE_PORT, WuR_I2C_WAKE_LOC);
-    USTIMER_Delay(50);
 
 	i2c_trans_res = _i2c_com_master_transfer(i2c_slave_addr, I2C_FLAG_WRITE, reg_buffer,1, NULL, 0);
 	if(i2c_trans_res != i2cTransferDone){
 		return -8;
 	}
 
-    USTIMER_Delay(100);
+    USTIMER_Delay(25);
 
 	return _i2c_com_master_transfer(i2c_slave_addr, I2C_FLAG_READ, read_buf, read_buf_len, NULL, 0);
 

@@ -12,6 +12,7 @@
 #include "i2c_wur.h"
 #include "micro/endian.h"
 #include <string.h>
+#include "gpiointerrupt.h"
 
 #define FRAME_BUF_LEN WUR_HEADER_LEN + WUR_MAX_DATA_LEN
 typedef enum wur_tx_status{
@@ -35,8 +36,19 @@ typedef struct wur_context{
 static wur_context_t wur_context;
 static volatile uint8_t wur_op_pending;
 
+/* handles the interruption genrated by the WUR GPIO pin. */
+void wur_int_handler(uint8_t interrupt){
+  wur_op_pending = 1;
+}
+
 void wur_init(uint16_t addr){
 	ook_wur_init();
+
+	/* prepare WuR interrupt pin*/
+	GPIO_PinModeSet(WuR_INT_WAKE_PORT, WuR_INT_WAKE_LOC, gpioModeInputPullFilter, 1);
+	GPIOINT_Init();
+	GPIOINT_CallbackRegister(WuR_INT_WAKE_LOC, wur_int_handler);
+	GPIO_ExtIntConfig(WuR_INT_WAKE_PORT, WuR_INT_WAKE_LOC, WuR_INT_WAKE_LOC, 1, 0, true);
 
 	wur_i2c_init();
 
@@ -83,11 +95,13 @@ void wur_tick(uint32_t systick){
 		wur_op_pending = false;
 		return;
 	}
+
 	if(wurx_state.wur_status != WURX_HAS_FRAME){
 		emberAfCorePrintln("Warning: Woke up without frame available!");
 		wur_op_pending = false;
 		return;
 	}
+
 	if(wur_get_frame(wur_context.frame_buffer, wurx_state.wur_frame_len) != WUR_OK){
 		emberAfCorePrintln("Warning: failed to get frame from WuR!");
 		wur_op_pending = false;

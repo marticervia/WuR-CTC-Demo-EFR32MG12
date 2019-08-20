@@ -19,8 +19,10 @@
 #define DEBUG_PRINT(...)
 #endif
 
+
 void wur_i2c_init(void){
 	i2c_com_init();
+
 }
 
 uint8_t wur_set_address(uint16_t addr){
