@@ -110,7 +110,7 @@ void wur_tick(uint32_t systick){
 
 	wur_context.frame_len = wurx_state.wur_frame_len;
 	uint8_t frame_type = wur_context.frame_buffer[2] & 0x07;
-	uint8_t seq_num = wur_context.frame_buffer[2] & 0x07;
+	uint8_t seq_num = wur_context.frame_buffer[2] & 0x01;
 
 	uint16_t addr;
 	memcpy(&addr, wur_context.frame_buffer, 2);
@@ -120,6 +120,7 @@ void wur_tick(uint32_t systick){
 	if(frame_type & ACK_FLAG){
 		if(wur_context.expected_seq_num == seq_num){
 			if(wur_context.tx_cb){
+				emberAfCorePrintln("Got ACK!");
 				wur_context.wur_status = WUR_STATUS_IDLE;
 				wur_context.tx_cb(WUR_ERROR_TX_OK);
 				wur_context.expected_seq_num ^= 1;
@@ -127,6 +128,7 @@ void wur_tick(uint32_t systick){
 		}
 		else{
 			if(wur_context.tx_cb){
+				emberAfCorePrintln("Got NACK!");
 				wur_context.wur_status = WUR_STATUS_IDLE;
 				wur_context.tx_cb(WUR_ERROR_TX_NACK);
 				wur_context.expected_seq_num ^= 1;
@@ -135,12 +137,15 @@ void wur_tick(uint32_t systick){
 	}
 
 	if((frame_type & DATA_FLAG) || (frame_type & WAKE_FLAG)){
+		emberAfCorePrintln("Got DATA!");
 		/* an ack can piggiback a response frame, so continue*/
 		if((wur_context.frame_len > 3) && wur_context.rx_cb){
+			emberAfCorePrintln("parse DATA!");
 			wur_context.rx_cb(WUR_ERROR_RX_OK, wur_context.frame_buffer, wur_context.frame_len);
 			wur_context.rx_timestamp = systick;
 		}
 		if(!(frame_type & ACK_FLAG)){
+			emberAfCorePrintln("Acknowledge DATA frame!");
 			wur_send_ack(addr, seq_num);
 		}
 	}

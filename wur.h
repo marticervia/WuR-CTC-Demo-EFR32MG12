@@ -11,7 +11,7 @@
 
 #define WUR_DEFAULT_TIMEOUT 10000
 #define WUR_WAKE_TIMEOUT 10000
-#define WUR_DATA_TIMEOUT 100
+#define WUR_DATA_TIMEOUT 10000
 #define WUR_PAYLOAD_OFFSET 3
 
 typedef enum wur_tx_res{
