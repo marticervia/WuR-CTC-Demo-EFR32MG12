@@ -132,6 +132,8 @@
 #define WuR_I2C_WAKE_LOC                      (8U)
 #define WuR_INT_WAKE_PORT                     (gpioPortA)
 #define WuR_INT_WAKE_LOC                      (9U)
+#define WuR_FRAME_PORT                        (gpioPortA)
+#define WuR_FRAME_LOC                         (7U)
 
 #define HAL_I2C0_INIT_ENABLE                  (0)
 #define HAL_I2C0_MAX_BUS_FREQ                 (100000UL)
