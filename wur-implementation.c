@@ -426,12 +426,12 @@ static void _wur_tx_cb(wur_tx_res_t tx_res){
 		case APP_WAITING_DATA:
 			if(tx_res == WUR_ERROR_TX_OK){
 				if(app_ctxt.app_status == APP_WAITING_WAKE){
-					emberAfCorePrintln("[%d]: Going to respond to Wake!", current_timestamp);
+					//emberAfCorePrintln("[%d]: Going to respond to Wake!", current_timestamp);
 					app_ctxt.app_status = APP_RESPONDING_WAKE;
 
 				}
 				else{
-					emberAfCorePrintln("[%d]: Going to respond to Data!", current_timestamp);
+					//emberAfCorePrintln("[%d]: Going to respond to Data!", current_timestamp);
 					app_ctxt.app_status = APP_RESPONDING_DATA;
 				}
 				memset(app_ctxt.app_data_buf, 0, MAX_APP_DATA_BUF);
@@ -459,8 +459,8 @@ static void _wur_tx_cb(wur_tx_res_t tx_res){
 static void _wur_rx_cb(wur_rx_res_t rx_res, uint8_t* rx_bytes, uint8_t rx_bytes_len){
 	uint32_t current_timestamp = halCommonGetInt32uMillisecondTick();
 
-	emberAfCorePrintln("[%d]: Received response with status %d!", current_timestamp, rx_res);
-	_printBuffer(rx_bytes, rx_bytes_len);
+	//emberAfCorePrintln("[%d]: Received response with status %d!", current_timestamp, rx_res);
+	//_printBuffer(rx_bytes, rx_bytes_len);
 	if(rx_bytes_len > MAX_APP_DATA_BUF){
 		emberAfCorePrintln("[%d]: Received response above max frame size %d!", current_timestamp);
 	}
@@ -495,7 +495,7 @@ void WuRAppTick(void){
 			}
 			break;
 		case APP_SENDING_WAKE:
-			emberAfCorePrintln("[%d]: Sending Wake Device REQ!", current_timestamp);
+			//emberAfCorePrintln("[%d]: Sending Wake Device REQ!", current_timestamp);
 			wur_addr = _getuint16t(app_ctxt.app_data_buf);
 			wake_ms = _getuint16t(&app_ctxt.app_data_buf[PAYLOAD_OFFSET]);
 
@@ -508,7 +508,7 @@ void WuRAppTick(void){
 			app_ctxt.app_status = APP_WAITING_WAKE;
 			break;
 		case APP_SENDING_DATA:
-			emberAfCorePrintln("[%d]: Sending Data to Device REQ!", current_timestamp);
+			//emberAfCorePrintln("[%d]: Sending Data to Device REQ!", current_timestamp);
 			wur_addr = _getuint16t(app_ctxt.app_data_buf);
 
 			tx_res = wur_send_data(wur_addr, &app_ctxt.app_data_buf[PAYLOAD_OFFSET], app_ctxt.app_data_buf_len - PAYLOAD_OFFSET, false, -1);
@@ -527,12 +527,12 @@ void WuRAppTick(void){
 			}
 			break;
 		case APP_RESPONDING_WAKE:
-			emberAfCorePrintln("[%d]: Sending Response to Wake Device REQ!", current_timestamp);
+			//emberAfCorePrintln("[%d]: Sending Response to Wake Device REQ!", current_timestamp);
 			_respondWithPayload(NULL, 0);
 			app_ctxt.app_status = APP_IDLE;
 			break;
 		case APP_RESPONDING_DATA:
-			emberAfCorePrintln("[%d]: Sending Response to Data to Device REQ!", current_timestamp);
+			//emberAfCorePrintln("[%d]: Sending Response to Data to Device REQ!", current_timestamp);
 			_respondWithPayload(app_ctxt.app_data_buf, app_ctxt.app_data_buf_len );
 			app_ctxt.app_status = APP_IDLE;
 			break;
