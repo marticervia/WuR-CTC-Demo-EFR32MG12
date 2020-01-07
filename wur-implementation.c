@@ -497,6 +497,7 @@ void WuRAppTick(void){
 		case APP_SENDING_WAKE:
 			//emberAfCorePrintln("[%d]: Sending Wake Device REQ!", current_timestamp);
 			wur_addr = _getuint16t(app_ctxt.app_data_buf);
+			wur_addr = wur_addr & 0x03FF;
 			wake_ms = _getuint16t(&app_ctxt.app_data_buf[PAYLOAD_OFFSET]);
 
 			tx_res = wur_send_wake(wur_addr, wake_ms);
@@ -510,7 +511,7 @@ void WuRAppTick(void){
 		case APP_SENDING_DATA:
 			//emberAfCorePrintln("[%d]: Sending Data to Device REQ!", current_timestamp);
 			wur_addr = _getuint16t(app_ctxt.app_data_buf);
-
+			wur_addr = wur_addr & 0x03FF;
 			tx_res = wur_send_data(wur_addr, &app_ctxt.app_data_buf[PAYLOAD_OFFSET], app_ctxt.app_data_buf_len - PAYLOAD_OFFSET, false, -1);
 			if(tx_res != WUR_ERROR_TX_OK){
 				emberAfCorePrintln("[%d]: Failure to send Data to Device REQ!", current_timestamp);
