@@ -2,20 +2,33 @@
  * @brief RAIL Configuration
  * @details
  *   WARNING: Auto-Generated Radio Config  -  DO NOT EDIT
- *   Radio Configurator Version: 4.9.1
- *   RAIL Adapter Version: 2.4.5
+ *   Radio Configurator Version: 5.0.1
+ *   RAIL Adapter Version: 2.4.10
  *   RAIL Compatibility: 2.x
  *******************************************************************************
  * # License
- * <b>Copyright 2018 Silicon Laboratories Inc. www.silabs.com</b>
+ * <b>Copyright 2019 Silicon Laboratories Inc. www.silabs.com</b>
  *******************************************************************************
  *
- * The licensor of this software is Silicon Laboratories Inc.  Your use of this
- * software is governed by the terms of  Silicon Labs Master Software License
- * Agreement (MSLA) available at
- * www.silabs.com/about-us/legal/master-software-license-agreement.  This
- * software is distributed to you in Source Code format and is governed by the
- * sections of the MSLA applicable to Source Code.
+ * SPDX-License-Identifier: Zlib
+ *
+ * The licensor of this software is Silicon Laboratories Inc.
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty. In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ *
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ *
+ * 1. The origin of this software must not be misrepresented; you must not
+ *    claim that you wrote the original software. If you use this software
+ *    in a product, an acknowledgment in the product documentation would be
+ *    appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ *    misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
  *
  ******************************************************************************/
 #include "em_common.h"
@@ -49,7 +62,7 @@ static RAIL_ChannelConfigEntryAttr_t channelConfigEntryAttr = {
 };
 
 static const uint32_t phyInfo[] = {
-  4UL,
+  5UL,
   0x00000000UL, // 0.0
   (uint32_t) NULL,
   (uint32_t) irCalConfig,
@@ -97,10 +110,10 @@ const uint32_t WuR_OOK_modemConfigBase[] = {
   /*    1FF4 */ 0x00000002UL,
   /*    1FF8 */ (uint32_t) &phyInfo,
   /*    1FFC */ 0x00000000UL,
-  0x00020004UL, 0x00028201UL,
-  /*    0008 */ 0x00000101UL,
+  0x00020004UL, 0x00038301UL,
+  /*    0008 */ 0x00000102UL,
   0x00020018UL, 0x00000000UL,
-  /*    001C */ 0x00000002UL,
+  /*    001C */ 0x00000003UL,
   0x00070028UL, 0x00000000UL,
   /*    002C */ 0x00000000UL,
   /*    0030 */ 0x00000000UL,
@@ -111,11 +124,11 @@ const uint32_t WuR_OOK_modemConfigBase[] = {
   0x00010048UL, 0x00000000UL,
   0x00020054UL, 0x00000000UL,
   /*    0058 */ 0x00000000UL,
-  0x000400A0UL, 0x00004802UL,
+  0x000400A0UL, 0x00004803UL,
   /*    00A4 */ 0x00004CFFUL,
-  /*    00A8 */ 0x00004902UL,
+  /*    00A8 */ 0x00004903UL,
   /*    00AC */ 0x00004DFFUL,
-  0x00012000UL, 0x000007E0UL,
+  0x00012000UL, 0x000007A0UL,
   0x00012010UL, 0x00000000UL,
   0x00012018UL, 0x000000E0UL,
   0x00013008UL, 0x0100AC13UL,

@@ -505,6 +505,7 @@ void WuRAppTick(void){
 				emberAfCorePrintln("[%d]: Failure to send Wake Device REQ!", current_timestamp);
 				_respondWithError(APP_TRANS_KO_TX);
 				app_ctxt.app_status = APP_IDLE;
+				break;
 			}
 			app_ctxt.app_status = APP_WAITING_WAKE;
 			break;
@@ -517,6 +518,7 @@ void WuRAppTick(void){
 				emberAfCorePrintln("[%d]: Failure to send Data to Device REQ!", current_timestamp);
 				_respondWithError(APP_TRANS_KO_TX);
 				app_ctxt.app_status = APP_IDLE;
+				break;
 			}
 			app_ctxt.app_status = APP_WAITING_DATA;
 			break;
