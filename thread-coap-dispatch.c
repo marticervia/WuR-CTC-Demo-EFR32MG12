@@ -17,5 +17,7 @@ const EmberAfCoapDispatchEntry emberAfCoapDispatchTable[] = {
   {EMBER_AF_COAP_DISPATCH_METHOD_ANY, "rd/", 3, emZclHandler},
   {EMBER_AF_COAP_DISPATCH_METHOD_POST, "wur/wake/", 9, WuRWakeDevice},
   {EMBER_AF_COAP_DISPATCH_METHOD_POST, "wur/data/", 9, WuRRequestDevice},
+  {EMBER_AF_COAP_DISPATCH_METHOD_POST, "wur/test/start", 9, WuRTestStartDevice},
+  {EMBER_AF_COAP_DISPATCH_METHOD_GET, "wur/test/status", 9, WuRTestStatusDevice},
   {0, NULL, 0, NULL}, // terminator
 };

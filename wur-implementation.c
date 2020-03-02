@@ -29,6 +29,7 @@
 #include "ook_wur.h"
 #include "i2c_wur.h"
 #include "wur.h"
+#include "em_adc.h"
 
 // WARNING: This sample application uses fixed network parameters and the well-
 // know sensor/sink network key as the master key.  This is done for
@@ -315,6 +316,56 @@ void ezModeEventHandler(void)
   emberZclStartEzMode();
 }
 
+void initAdcRNG(void){
+	   uint32_t i;
+
+	   /* Enable ADC Clock */
+	   CMU_ClockEnable(cmuClock_ADC0, true);
+	   ADC_Init_TypeDef init = ADC_INIT_DEFAULT;
+	   ADC_InitSingle_TypeDef singleInit = ADC_INITSINGLE_DEFAULT;
+
+	   /* Initialize the ADC with the required values */
+	   init.timebase = ADC_TimebaseCalc(0);
+	   init.prescale = ADC_PrescaleCalc(7000000, 0);
+	   ADC_Init(ADC0, &init);
+
+	   /* Initialize for single conversion specific to RNG */
+	   singleInit.reference = adcRefVEntropy;
+	   singleInit.diff = true;
+	   singleInit.posSel = adcPosSelVSS;
+	   singleInit.negSel = adcNegSelVSS;
+	   ADC_InitSingle(ADC0, &singleInit);
+
+	   /* Set VINATT to maximum value and clear FIFO */
+	   ADC0->SINGLECTRLX |= _ADC_SINGLECTRLX_VINATT_MASK;
+	   ADC0->SINGLEFIFOCLEAR = ADC_SINGLEFIFOCLEAR_SINGLEFIFOCLEAR;
+}
+
+uint8_t adcRngGetByte(void)
+{
+   uint32_t i;
+   uint8_t random= 0;
+
+   /* Enable ADC Clock */
+   /* Random number generation */
+   for (i=0; i<3; i++)
+   {
+      ADC_Start(ADC0, adcStartSingle);
+      while ((ADC0->IF & ADC_IF_SINGLE) == 0);
+      random |= ((ADC_DataSingleGet(ADC0) & 0x07) << (i *3));
+   }
+
+   return random;
+}
+
+void efr_fill_random(uint8_t* buffer, uint16_t buffer_len){
+	uint32_t i;
+
+	for(i = 0; i < buffer_len; i++){
+		buffer[i] = adcRngGetByte();
+	}
+}
+
 static app_ctxt_t app_ctxt;
 static test_ctxt_t test_ctxt;
 
@@ -330,7 +381,8 @@ static void init_test_context(test_ctxt_t* ctxt){
 }
 
 static void generate_test_frame(uint8_t* buffer, uint16_t req_len_bytes){
-    esp_fill_random(buffer, req_len_bytes);
+	RAIL_GetRadioEntropy();
+    efr_fill_random(buffer, req_len_bytes);
 }
 
 static void fail_test_context(test_ctxt_t* ctxt, char* reason, uint32_t fail_timestamp){

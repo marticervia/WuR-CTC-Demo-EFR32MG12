@@ -98,6 +98,20 @@ void WuRRequestDevice (EmberCoapCode code,
                                          uint16_t payloadLength,
                                          const EmberCoapRequestInfo *info);
 
+void WuRTestStartDevice(EmberCoapCode code,
+                                         uint8_t *uri,
+                                         EmberCoapReadOptions *options,
+                                         const uint8_t *payload,
+                                         uint16_t payloadLength,
+                                         const EmberCoapRequestInfo *info);
+
+void WuRTestStatusDevice (EmberCoapCode code,
+                                         uint8_t *uri,
+                                         EmberCoapReadOptions *options,
+                                         const uint8_t *payload,
+                                         uint16_t payloadLength,
+                                         const EmberCoapRequestInfo *info);
+
 void WuRSystemTick(uint32_t timestamp);
 
 #endif /* WUR_IMPLEMENTATION_H_ */
