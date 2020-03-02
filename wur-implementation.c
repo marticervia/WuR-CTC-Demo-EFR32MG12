@@ -370,7 +370,7 @@ static app_ctxt_t app_ctxt;
 static test_ctxt_t test_ctxt;
 
 static void init_test_context(test_ctxt_t* ctxt){
-    ctxt->start_timestamp = get_timestamp_ms();
+    ctxt->start_timestamp = halCommonGetInt32uMillisecondTick();
     ctxt->finish_timestamp = 0;
     ctxt->current_frame = 0;
     ctxt->total_frames = TOTAL_TEST_FRAMES;
@@ -381,7 +381,6 @@ static void init_test_context(test_ctxt_t* ctxt){
 }
 
 static void generate_test_frame(uint8_t* buffer, uint16_t req_len_bytes){
-	RAIL_GetRadioEntropy();
     efr_fill_random(buffer, req_len_bytes);
 }
 
@@ -389,8 +388,8 @@ static void fail_test_context(test_ctxt_t* ctxt, char* reason, uint32_t fail_tim
     ctxt->test_status = TEST_FAILED;
     strcpy(ctxt->failure_reason, reason);
     ctxt->finish_timestamp = fail_timestamp;
-    printf("[%d]: Finished test with failure on frame: %d/%d !\n", fail_timestamp, test_ctxt.current_frame, test_ctxt.total_frames);
-    printf("[%d]: Test run in %d milliseconds!\n", fail_timestamp, test_ctxt.finish_timestamp - test_ctxt.start_timestamp);
+    printf("[%u]: Finished test with failure on frame: %u/%u !\n", fail_timestamp, test_ctxt.current_frame, test_ctxt.total_frames);
+    printf("[%u]: Test run in %u milliseconds!\n", fail_timestamp, test_ctxt.finish_timestamp - test_ctxt.start_timestamp);
     app_ctxt.app_status = APP_IDLE;
 
 }
@@ -398,10 +397,10 @@ static void fail_test_context(test_ctxt_t* ctxt, char* reason, uint32_t fail_tim
 static void aprove_test_context(test_ctxt_t* ctxt, uint32_t success_timestamp){
     ctxt->test_status = TEST_FINISHED;
     ctxt->finish_timestamp = success_timestamp;
-    printf("[%d]: Finished test with results: %d/%d !\n", success_timestamp, test_ctxt.OK_frames, test_ctxt.total_frames);
-    printf("[%d]: Test run in %d milliseconds!\n", success_timestamp, test_ctxt.finish_timestamp - test_ctxt.start_timestamp);
+    printf("[%u]: Finished test with results: %u/%u !\n", success_timestamp, test_ctxt.OK_frames, test_ctxt.total_frames);
+    printf("[%u]: Test run in %u milliseconds!\n", success_timestamp, test_ctxt.finish_timestamp - test_ctxt.start_timestamp);
     uint32_t bitrate = (test_ctxt.OK_frames * TEST_FRAME_SIZE * 8* 1000) / ((test_ctxt.finish_timestamp - test_ctxt.start_timestamp));
-    printf("[%d]: Calculated bitrate is: %d !\n", success_timestamp, bitrate);
+    printf("[%u]: Calculated bitrate is: %u !\n", success_timestamp, bitrate);
     app_ctxt.app_status = APP_IDLE;
 }
 
@@ -415,7 +414,7 @@ static void update_text_context(test_ctxt_t* ctxt, bool OK_result){
         ctxt->KO_frames++;
     }
     if(ctxt->current_frame == ctxt->total_frames){
-        aprove_test_context(ctxt, get_timestamp_ms());
+        aprove_test_context(ctxt, halCommonGetInt32uMillisecondTick());
     }
 }
 
