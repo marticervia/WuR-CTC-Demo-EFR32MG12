@@ -316,7 +316,127 @@ void ezModeEventHandler(void)
 }
 
 static app_ctxt_t app_ctxt;
+static test_ctxt_t test_ctxt;
+
+static void init_test_context(test_ctxt_t* ctxt){
+    ctxt->start_timestamp = get_timestamp_ms();
+    ctxt->finish_timestamp = 0;
+    ctxt->current_frame = 0;
+    ctxt->total_frames = TOTAL_TEST_FRAMES;
+    ctxt->KO_frames= 0;
+    ctxt->OK_frames = 0;
+    ctxt->test_status = TEST_IN_PROGRESS;
+    memset(ctxt->failure_reason, 0, TEST_REASON_LEN);
+}
+
+static void generate_test_frame(uint8_t* buffer, uint16_t req_len_bytes){
+    esp_fill_random(buffer, req_len_bytes);
+}
+
+static void fail_test_context(test_ctxt_t* ctxt, char* reason, uint32_t fail_timestamp){
+    ctxt->test_status = TEST_FAILED;
+    strcpy(ctxt->failure_reason, reason);
+    ctxt->finish_timestamp = fail_timestamp;
+    printf("[%d]: Finished test with failure on frame: %d/%d !\n", fail_timestamp, test_ctxt.current_frame, test_ctxt.total_frames);
+    printf("[%d]: Test run in %d milliseconds!\n", fail_timestamp, test_ctxt.finish_timestamp - test_ctxt.start_timestamp);
+    app_ctxt.app_status = APP_IDLE;
+
+}
+
+static void aprove_test_context(test_ctxt_t* ctxt, uint32_t success_timestamp){
+    ctxt->test_status = TEST_FINISHED;
+    ctxt->finish_timestamp = success_timestamp;
+    printf("[%d]: Finished test with results: %d/%d !\n", success_timestamp, test_ctxt.OK_frames, test_ctxt.total_frames);
+    printf("[%d]: Test run in %d milliseconds!\n", success_timestamp, test_ctxt.finish_timestamp - test_ctxt.start_timestamp);
+    uint32_t bitrate = (test_ctxt.OK_frames * TEST_FRAME_SIZE * 8* 1000) / ((test_ctxt.finish_timestamp - test_ctxt.start_timestamp));
+    printf("[%d]: Calculated bitrate is: %d !\n", success_timestamp, bitrate);
+    app_ctxt.app_status = APP_IDLE;
+}
+
+
+static void update_text_context(test_ctxt_t* ctxt, bool OK_result){
+    ctxt->current_frame++;
+    if(OK_result){
+        ctxt->OK_frames++;
+    }
+    else{
+        ctxt->KO_frames++;
+    }
+    if(ctxt->current_frame == ctxt->total_frames){
+        aprove_test_context(ctxt, get_timestamp_ms());
+    }
+}
+
 /* wur related handlers */
+void WuRTestStartDevice(EmberCoapCode code,
+					 uint8_t *uri,
+					 EmberCoapReadOptions *options,
+					 const uint8_t *payload,
+					 uint16_t payloadLength,
+					 const EmberCoapRequestInfo *info){
+    printf("Received /test/start request");
+
+    if(test_ctxt.test_status == TEST_IN_PROGRESS){
+		emberCoapRespondWithCode(info, EMBER_COAP_CODE_412_PRECONDITION_FAILED);
+		return;
+    }
+
+    init_test_context(&test_ctxt);
+    app_ctxt.app_status = TEST_SENDING_WAKE;
+	emberCoapRespondWithCode(info, EMBER_COAP_CODE_203_VALID);
+}
+
+void WuRTestStatusDevice(EmberCoapCode code,
+					 uint8_t *uri,
+					 EmberCoapReadOptions *options,
+					 const uint8_t *payload,
+					 uint16_t payloadLength,
+					 const EmberCoapRequestInfo *info){
+
+	uint8_t resp_payload[TEST_STATUS_PAYLOAD_LEN];
+	uint16_t u16_tmp_val;
+	uint32_t u32_tmp_val;
+    printf("Received /test/status request");
+
+    /*
+     * 1. Copy the test status.
+     */
+    resp_payload[0] = (uint8_t) test_ctxt.test_status;
+    /*
+     * 2. Copy the test current frame.
+     */
+    u16_tmp_val = htons(test_ctxt.current_frame);
+    memcpy(resp_payload, &u16_tmp_val, TEST_STATUS_PAYLOAD_OFFSET_CURR_FRAME);
+    /*
+     * 3. Copy the total test frame.
+     */
+    u16_tmp_val = htons(test_ctxt.total_frames);
+    memcpy(resp_payload, &u16_tmp_val, TEST_STATUS_PAYLOAD_OFFSET_TOTAL_FRAME);
+    /*
+     * 4. Copy the OK frame count.
+     */
+    u16_tmp_val = htons(test_ctxt.OK_frames);
+    memcpy(resp_payload, &u16_tmp_val, TEST_STATUS_PAYLOAD_OFFSET_OK_FRAME);
+    /*
+     * 5. Copy the KO frame count.
+     */
+    u16_tmp_val = htons(test_ctxt.KO_frames);
+    memcpy(resp_payload, &u16_tmp_val, TEST_STATUS_PAYLOAD_OFFSET_KO_FRAME);
+    /*
+     * 6. Copy the timestamp.
+     */
+    if(test_ctxt.finish_timestamp != 0){
+    	u32_tmp_val = htonl(test_ctxt.finish_timestamp - test_ctxt.start_timestamp);
+    }
+    else{
+    	u32_tmp_val = 0;
+    }
+    memcpy(resp_payload, &u32_tmp_val, TEST_STATUS_PAYLOAD_OFFSET_RUNTIME);
+
+	 emberCoapRespondWithPayload(&app_ctxt.app_request_info, EMBER_COAP_CODE_203_VALID,
+			 resp_payload, TEST_STATUS_PAYLOAD_LEN);
+}
+
 
 void WuRWakeDevice(EmberCoapCode code,
 					 uint8_t *uri,
@@ -449,6 +569,30 @@ static void _wur_tx_cb(wur_tx_res_t tx_res){
 				_respondWithError(APP_TRANS_KO_TIMEOUT);
 			}
 			break;
+        case TEST_WAITING_WAKE:
+            if(tx_res == WUR_ERROR_TX_OK){
+                app_ctxt.app_status = TEST_GENERATE_FRAME;
+            }
+            else{
+                app_ctxt.app_status = TEST_COMPLETE_FAILURE;
+            }
+            break;
+        case TEST_WAIT_FRAME:
+            if(tx_res == WUR_ERROR_TX_OK){
+                //printf("[%d]: Received ACK!\n", current_timestamp);
+                app_ctxt.app_status = TEST_COMPLETE_OK_FRAME;
+            }
+            else if(tx_res == WUR_ERROR_TX_ACK_DATA_TIMEOUT){
+                //printf("[%d]: Received NACK!\n", current_timestamp);
+                app_ctxt.app_status = TEST_COMPLETE_KO_FRAME;
+            }
+            else{
+                //printf("[%d]: Received Error!\n", current_timestamp);
+                app_ctxt.app_status = TEST_COMPLETE_FAILURE;
+            }
+            memset(app_ctxt.app_data_buf, 0, MAX_APP_DATA_BUF);
+            app_ctxt.app_data_buf_len = 0;
+            break;
 		default:
 			emberAfCorePrintln("[%d]: Received ACK while not waiting. Is this an error?!", current_timestamp);
 			break;
@@ -479,6 +623,8 @@ void WuRInitApp(void){
 	wur_set_tx_cb(_wur_tx_cb);
 	wur_set_rx_cb(_wur_rx_cb);
 }
+
+uint8_t test_data_buf[TEST_FRAME_SIZE];
 
 void WuRAppTick(void){
 
@@ -539,6 +685,72 @@ void WuRAppTick(void){
 			_respondWithPayload(app_ctxt.app_data_buf, app_ctxt.app_data_buf_len );
 			app_ctxt.app_status = APP_IDLE;
 			break;
+
+        case TEST_SENDING_WAKE:
+            //printf("[%d]: Sending Test Wake Device REQ!\n", current_timestamp);
+            wur_addr = TEST_ADDR & (0x03FF);
+            wake_ms = TEST_WAKE_INTERVAL;
+
+            app_ctxt.app_status = TEST_WAITING_WAKE;
+            tx_res = wur_send_wake(wur_addr, wake_ms);
+            if(tx_res != WUR_ERROR_TX_OK){
+                printf("[%d]: Failure to send Wake Device REQ!\n", current_timestamp);
+                _respondWithError(APP_TRANS_KO_TX);
+                app_ctxt.app_status = TEST_COMPLETE_FAILURE;
+                break;
+            }
+            //printf("[%d]: Sent Test Wake Device REQ!\n", current_timestamp);
+            break;
+
+        case TEST_WAITING_WAKE:
+            //printf("Waiting frame!");
+            break;
+
+
+        case TEST_GENERATE_FRAME:
+            //printf("Generating frame!");
+            generate_test_frame(test_data_buf, TEST_FRAME_SIZE);
+            app_ctxt.app_status = TEST_SEND_FRAME;
+            break;
+
+        case TEST_SEND_FRAME:
+            //printf("[%d]: Sending Data to Device test, frame %d/%d!\n", current_timestamp, test_ctxt.current_frame, test_ctxt.total_frames);
+            wur_addr = TEST_ADDR & (0x03FF);
+            app_ctxt.app_status = TEST_WAIT_FRAME;
+            tx_res = wur_send_data(wur_addr, (uint8_t*)&test_data_buf, TEST_FRAME_SIZE, false, -1);
+            if(tx_res != WUR_ERROR_TX_OK){
+                printf("[%d]: Failure to send Data to Device REQ!\n", current_timestamp);
+                update_text_context(&test_ctxt, false);
+                app_ctxt.app_status = TEST_GENERATE_FRAME;
+            }
+            //printf("[%d]: Sent Test Data Device REQ!\n", current_timestamp);
+            break;
+
+        case TEST_WAIT_FRAME:
+            //printf("Wait Frame!");
+            break;
+
+        case TEST_COMPLETE_OK_FRAME:
+            //printf("Frame sent OK!");
+            update_text_context(&test_ctxt, true);
+            if(test_ctxt.test_status == TEST_IN_PROGRESS){
+                //printf("Prepare next frame!");
+                app_ctxt.app_status = TEST_GENERATE_FRAME;
+            }
+            break;
+        case TEST_COMPLETE_KO_FRAME:
+            //printf("Frame sent KO!");
+            update_text_context(&test_ctxt, false);
+            if(test_ctxt.test_status == TEST_IN_PROGRESS){
+                //printf("Prepare next frame!");
+                app_ctxt.app_status = TEST_GENERATE_FRAME;
+            }
+            break;
+        case TEST_COMPLETE_FAILURE:
+            //printf("Test failure!");
+            fail_test_context(&test_ctxt, "Error while taking the test.\n", current_timestamp);
+            app_ctxt.app_status = APP_IDLE;
+            break;
 		default:
 			break;
 	}

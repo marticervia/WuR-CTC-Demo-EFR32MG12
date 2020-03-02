@@ -21,6 +21,19 @@
 #define MIN_DATA_REQ_LEN 3
 
 
+#define TOTAL_TEST_FRAMES 100
+#define TEST_REASON_LEN 128
+#define TEST_FRAME_SIZE 64
+#define TEST_ADDR 0x0555
+#define TEST_WAKE_INTERVAL 30000
+#define TEST_STATUS_PAYLOAD_LEN 13
+#define TEST_STATUS_PAYLOAD_OFFSET_STATUS 0
+#define TEST_STATUS_PAYLOAD_OFFSET_CURR_FRAME 1
+#define TEST_STATUS_PAYLOAD_OFFSET_TOTAL_FRAME 3
+#define TEST_STATUS_PAYLOAD_OFFSET_OK_FRAME 5
+#define TEST_STATUS_PAYLOAD_OFFSET_KO_FRAME 7
+#define TEST_STATUS_PAYLOAD_OFFSET_RUNTIME 9
+
 typedef enum  app_status{
 	APP_IDLE = 0,
 	APP_SENDING_WAKE = 1,
@@ -28,8 +41,23 @@ typedef enum  app_status{
 	APP_RESPONDING_WAKE = 3,
 	APP_SENDING_DATA = 4,
 	APP_WAITING_DATA = 5,
-	APP_RESPONDING_DATA = 6
+	APP_RESPONDING_DATA = 6,
+	TEST_GENERATE_FRAME = 7,
+	TEST_SEND_FRAME = 8,
+	TEST_WAIT_FRAME = 9,
+	TEST_COMPLETE_OK_FRAME = 10,
+	TEST_COMPLETE_KO_FRAME = 11,
+	TEST_COMPLETE_FAILURE = 12,
+	TEST_SENDING_WAKE = 13,
+	TEST_WAITING_WAKE = 14
 }app_status_t;
+
+typedef enum  test_status{
+	TEST_IDLE = 0,
+	TEST_IN_PROGRESS = 1,
+	TEST_FAILED = 2,
+	TEST_FINISHED = 3
+}test_status_t;
 
 typedef enum  app_trans_result{
 	APP_TRANS_OK = 0,
@@ -44,6 +72,17 @@ typedef struct app_ctxt{
 	uint8_t 		 	 app_data_buf[MAX_APP_DATA_BUF];
 	uint8_t 		 	 app_data_buf_len;
 }app_ctxt_t;
+
+typedef struct test_ctxt{
+	test_status_t 		 test_status;
+	uint16_t 		 	 total_frames;
+	uint16_t 		 	 current_frame;
+	uint16_t 			 OK_frames;
+	uint16_t 			 KO_frames;
+	uint32_t 			 start_timestamp;
+	uint32_t 			 finish_timestamp;
+	char			     failure_reason[TEST_REASON_LEN];
+}test_ctxt_t;
 
 void WuRWakeDevice(EmberCoapCode code,
                                          uint8_t *uri,
