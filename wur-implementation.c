@@ -388,8 +388,8 @@ static void fail_test_context(test_ctxt_t* ctxt, char* reason, uint32_t fail_tim
     ctxt->test_status = TEST_FAILED;
     strcpy(ctxt->failure_reason, reason);
     ctxt->finish_timestamp = fail_timestamp;
-    printf("[%u]: Finished test with failure on frame: %u/%u !\n", fail_timestamp, test_ctxt.current_frame, test_ctxt.total_frames);
-    printf("[%u]: Test run in %u milliseconds!\n", fail_timestamp, test_ctxt.finish_timestamp - test_ctxt.start_timestamp);
+    emberAfCorePrintln("[%u]: Finished test with failure on frame: %u/%u !\n", fail_timestamp, test_ctxt.current_frame, test_ctxt.total_frames);
+    emberAfCorePrintln("[%u]: Test run in %u milliseconds!\n", fail_timestamp, test_ctxt.finish_timestamp - test_ctxt.start_timestamp);
     app_ctxt.app_status = APP_IDLE;
 
 }
@@ -397,10 +397,10 @@ static void fail_test_context(test_ctxt_t* ctxt, char* reason, uint32_t fail_tim
 static void aprove_test_context(test_ctxt_t* ctxt, uint32_t success_timestamp){
     ctxt->test_status = TEST_FINISHED;
     ctxt->finish_timestamp = success_timestamp;
-    printf("[%u]: Finished test with results: %u/%u !\n", success_timestamp, test_ctxt.OK_frames, test_ctxt.total_frames);
-    printf("[%u]: Test run in %u milliseconds!\n", success_timestamp, test_ctxt.finish_timestamp - test_ctxt.start_timestamp);
+    emberAfCorePrintln("[%u]: Finished test with results: %u/%u !\n", success_timestamp, test_ctxt.OK_frames, test_ctxt.total_frames);
+    emberAfCorePrintln("[%u]: Test run in %u milliseconds!\n", success_timestamp, test_ctxt.finish_timestamp - test_ctxt.start_timestamp);
     uint32_t bitrate = (test_ctxt.OK_frames * TEST_FRAME_SIZE * 8* 1000) / ((test_ctxt.finish_timestamp - test_ctxt.start_timestamp));
-    printf("[%u]: Calculated bitrate is: %u !\n", success_timestamp, bitrate);
+    emberAfCorePrintln("[%u]: Calculated bitrate is: %u !\n", success_timestamp, bitrate);
     app_ctxt.app_status = APP_IDLE;
 }
 
@@ -425,7 +425,7 @@ void WuRTestStartDevice(EmberCoapCode code,
 					 const uint8_t *payload,
 					 uint16_t payloadLength,
 					 const EmberCoapRequestInfo *info){
-    printf("Received /test/start request");
+	emberAfCorePrintln("Received /test/start request");
 
     if(test_ctxt.test_status == TEST_IN_PROGRESS){
 		emberCoapRespondWithCode(info, EMBER_COAP_CODE_412_PRECONDITION_FAILED);
@@ -433,6 +433,7 @@ void WuRTestStartDevice(EmberCoapCode code,
     }
 
     init_test_context(&test_ctxt);
+	emberAfCorePrintln("Init test context");
     app_ctxt.app_status = TEST_SENDING_WAKE;
 	emberCoapRespondWithCode(info, EMBER_COAP_CODE_203_VALID);
 }
@@ -447,7 +448,7 @@ void WuRTestStatusDevice(EmberCoapCode code,
 	uint8_t resp_payload[TEST_STATUS_PAYLOAD_LEN];
 	uint16_t u16_tmp_val;
 	uint32_t u32_tmp_val;
-    printf("Received /test/status request");
+	emberAfCorePrintln("Received /test/status request");
 
     /*
      * 1. Copy the test status.
@@ -477,7 +478,7 @@ void WuRTestStatusDevice(EmberCoapCode code,
      * 6. Copy the timestamp.
      */
     if(test_ctxt.finish_timestamp != 0){
-    	u32_tmp_val = htonl(test_ctxt.finish_timestamp - test_ctxt.start_timestamp);
+    	u32_tmp_val = HTONL(test_ctxt.finish_timestamp - test_ctxt.start_timestamp);
     }
     else{
     	u32_tmp_val = 0;
@@ -673,6 +674,7 @@ void WuRInitApp(void){
 	app_ctxt.app_data_buf_len = 0;
 	wur_set_tx_cb(_wur_tx_cb);
 	wur_set_rx_cb(_wur_rx_cb);
+	initAdcRNG();
 }
 
 uint8_t test_data_buf[TEST_FRAME_SIZE];
@@ -738,6 +740,8 @@ void WuRAppTick(void){
 			break;
 
         case TEST_SENDING_WAKE:
+        	emberAfCorePrintln("Sending wake request");
+
             //printf("[%d]: Sending Test Wake Device REQ!\n", current_timestamp);
             wur_addr = TEST_ADDR & (0x03FF);
             wake_ms = TEST_WAKE_INTERVAL;
@@ -745,36 +749,36 @@ void WuRAppTick(void){
             app_ctxt.app_status = TEST_WAITING_WAKE;
             tx_res = wur_send_wake(wur_addr, wake_ms);
             if(tx_res != WUR_ERROR_TX_OK){
-                printf("[%d]: Failure to send Wake Device REQ!\n", current_timestamp);
+            	emberAfCorePrintln("[%d]: Failure to send Wake Device REQ!\n", current_timestamp);
                 _respondWithError(APP_TRANS_KO_TX);
                 app_ctxt.app_status = TEST_COMPLETE_FAILURE;
                 break;
             }
-            //printf("[%d]: Sent Test Wake Device REQ!\n", current_timestamp);
+            emberAfCorePrintln("[%d]: Sent Test Wake Device REQ!\n", current_timestamp);
             break;
 
         case TEST_WAITING_WAKE:
-            //printf("Waiting frame!");
+            emberAfCorePrintln("Waiting frame!");
             break;
 
 
         case TEST_GENERATE_FRAME:
-            //printf("Generating frame!");
+            emberAfCorePrintln("Generating frame!");
             generate_test_frame(test_data_buf, TEST_FRAME_SIZE);
             app_ctxt.app_status = TEST_SEND_FRAME;
             break;
 
         case TEST_SEND_FRAME:
-            //printf("[%d]: Sending Data to Device test, frame %d/%d!\n", current_timestamp, test_ctxt.current_frame, test_ctxt.total_frames);
+        	emberAfCorePrintln("[%d]: Sending Data to Device test, frame %d/%d!\n", current_timestamp, test_ctxt.current_frame, test_ctxt.total_frames);
             wur_addr = TEST_ADDR & (0x03FF);
             app_ctxt.app_status = TEST_WAIT_FRAME;
             tx_res = wur_send_data(wur_addr, (uint8_t*)&test_data_buf, TEST_FRAME_SIZE, false, -1);
             if(tx_res != WUR_ERROR_TX_OK){
-                printf("[%d]: Failure to send Data to Device REQ!\n", current_timestamp);
+            	emberAfCorePrintln("[%d]: Failure to send Data to Device REQ!\n", current_timestamp);
                 update_text_context(&test_ctxt, false);
                 app_ctxt.app_status = TEST_GENERATE_FRAME;
             }
-            //printf("[%d]: Sent Test Data Device REQ!\n", current_timestamp);
+            emberAfCorePrintln("[%d]: Sent Test Data Device REQ!\n", current_timestamp);
             break;
 
         case TEST_WAIT_FRAME:
@@ -782,7 +786,7 @@ void WuRAppTick(void){
             break;
 
         case TEST_COMPLETE_OK_FRAME:
-            //printf("Frame sent OK!");
+        	emberAfCorePrintln("Frame sent OK!");
             update_text_context(&test_ctxt, true);
             if(test_ctxt.test_status == TEST_IN_PROGRESS){
                 //printf("Prepare next frame!");
@@ -790,7 +794,7 @@ void WuRAppTick(void){
             }
             break;
         case TEST_COMPLETE_KO_FRAME:
-            //printf("Frame sent KO!");
+        	emberAfCorePrintln("Frame sent KO!");
             update_text_context(&test_ctxt, false);
             if(test_ctxt.test_status == TEST_IN_PROGRESS){
                 //printf("Prepare next frame!");
@@ -798,7 +802,7 @@ void WuRAppTick(void){
             }
             break;
         case TEST_COMPLETE_FAILURE:
-            //printf("Test failure!");
+        	emberAfCorePrintln("Test failure!");
             fail_test_context(&test_ctxt, "Error while taking the test.\n", current_timestamp);
             app_ctxt.app_status = APP_IDLE;
             break;
