@@ -42,7 +42,7 @@
 // These parameters have been chosen to match the border router sample
 // application, which will allow this design to perform out of band joining with
 // the border router sample application without need for modification.
-static const uint8_t preferredChannel = 19;
+static const uint8_t preferredChannel = 12;
 static const uint8_t networkId[EMBER_NETWORK_ID_SIZE] = "precommissioned";
 static const EmberPanId panId = 0x1076;
 
