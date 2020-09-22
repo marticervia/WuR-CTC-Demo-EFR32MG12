@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="com.silabs.module.additional.pdm.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt:7.2.1.20170904" propertyScope="project" contentRoot=".">
+  <folder name="emlib" partCompatibility=".*efr32.*">
+    <file name="system_efr32mg12p.c" uri="studio:/sdk/platform/Device/SiliconLabs/EFR32MG12P/Source/system_efr32mg12p.c"/>
+  </folder>
+  <folder name="hal-config">
+    <file name="hal-config.h" uri="studio:/project/hal-config/hal-config.h"/>
+  </folder>
+  <folder name="external-generated-files">
+    <file name="sample-dotdot-certificates.c" uri="studio:/sdk/protocol/thread/app/thread/plugin/dtls-auth-params/sample-dotdot-certificates.c"/>
+    <file name="bootloader-interface.c" uri="studio:/sdk/platform/base/hal/micro/cortexm3/efm32/bootloader-interface.c"/>
+    <file name="bootloader-interface-app.c" uri="studio:/sdk/platform/base/hal/micro/cortexm3/efm32/bootloader-interface-app.c"/>
+    <file name="btl_interface.c" uri="studio:/sdk/platform/bootloader/api/btl_interface.c"/>
+    <file name="btl_interface_storage.c" uri="studio:/sdk/platform/bootloader/api/btl_interface_storage.c"/>
+  </folder>
+  <file name="thread-bookkeeping.h" uri="studio:/project/thread-bookkeeping.h"/>
+  <file name="thread-bookkeeping.c" uri="studio:/project/thread-bookkeeping.c"/>
+  <file name="thread-coap-dispatch.c" uri="studio:/project/thread-coap-dispatch.c"/>
+  <file name="thread-debug-print.h" uri="studio:/project/thread-debug-print.h"/>
+  <file name="thread-events.c" uri="studio:/project/thread-events.c"/>
+  <file name="brd4162a_efr32mg12p332f1024gl125.hwconf" uri="studio:/project/brd4162a_efr32mg12p332f1024gl125.hwconf"/>
+  <file name="thread-token.h" uri="studio:/project/thread-token.h"/>
+  <file name="thread-mfg-token.h" uri="studio:/project/thread-mfg-token.h"/>
+  <file name="thread-zclip.h" uri="studio:/project/thread-zclip.h"/>
+  <file name="thread-zclip.c" uri="studio:/project/thread-zclip.c"/>
+  <file name="thread-callbacks.h" uri="studio:/project/thread-callbacks.h"/>
+  <file name="thread-callback-stubs.c" uri="studio:/project/thread-callback-stubs.c"/>
+  <file name="thread-callbacks.c" uri="studio:/project/thread-callbacks.c"/>
+  <file name="thread-cli.c" uri="studio:/project/thread-cli.c"/>
+  <file name="light-implementation.c" uri="studio:/project/light-implementation.c"/>
+  <file name="thread-configuration.h" uri="studio:/project/thread-configuration.h"/>
+  <file name="light-prebuild.py" uri="studio:/project/light-prebuild.py"/>
+  <file name="light-postbuild.py" uri="studio:/project/light-postbuild.py"/>
+  <file name="light.mak" uri="studio:/project/light.mak"/>
+  <file name="light-postbuild.sh" uri="studio:/project/light-postbuild.sh"/>
+  <file name="light-postbuild.bat" uri="studio:/project/light-postbuild.bat"/>
+  <file name="light-prebuild.sh" uri="studio:/project/light-prebuild.sh"/>
+  <file name="light-prebuild.bat" uri="studio:/project/light-prebuild.bat"/>
+  <includePath uri="studio:/project/"/>
+  <includePath uri="studio:/project/hal-config"/>
+  <includePath uri="studio:/project/external-generated-files"/>
+  <includePath uri="studio:/sdk/protocol/thread/app/thread/plugin/dtls-auth-params"/>
+  <includePath uri="studio:/sdk/platform/base/hal/micro/cortexm3/efm32"/>
+  <includePath uri="studio:/sdk/platform/bootloader/api"/>
+  <includePath languageCompatibility="c asm" uri="studio:/sdk/protocol/thread/"/>
+  <includePath languageCompatibility="c asm" uri="studio:/sdk/protocol/thread/stack"/>
+  <includePath languageCompatibility="c asm" uri="studio:/sdk/protocol/thread/app/util"/>
+  <includePath partCompatibility=".*efr32.*" languageCompatibility="c asm" uri="studio:/sdk/platform/Device/SiliconLabs-Restricted/EFR32MG12P/Include"/>
+  <includePath partCompatibility=".*efr32.*" languageCompatibility="c asm" uri="studio:/sdk/platform/Device/SiliconLabs/EFR32MG12P/Include"/>
+  <includePath partCompatibility=".*ember.*" languageCompatibility="c asm" uri="studio:/sdk/platform/Device/SiliconLabs/efr32mg12p/Include"/>
+  <includePath uri="studio:/sdk/platform/bootloader"/>
+  <includePath uri="studio:/sdk/platform/emdrv/nvm3/inc"/>
+  <includePath uri="studio:/sdk/platform/radio/rail_lib/chip/efr32/efr32xg1x"/>
+  <includePath uri="studio:/sdk/platform/radio/rail_lib/common"/>
+  <includePath uri="studio:/sdk/platform/radio/rail_lib/plugin/coexistence/common"/>
+  <includePath uri="studio:/sdk/platform/radio/rail_lib/plugin/coexistence/hal/efr32"/>
+  <includePath uri="studio:/sdk/platform/radio/rail_lib/plugin/coexistence/protocol/ieee802154"/>
+  <includePath uri="studio:/sdk/platform/radio/rail_lib/protocol/ble"/>
+  <includePath uri="studio:/sdk/platform/radio/rail_lib/protocol/ieee802154"/>
+  <includePath uri="studio:/sdk/platform/radio/rail_lib/protocol/zwave"/>
+  <includePath uri="studio:/sdk/util/third_party/mbedtls/include"/>
+  <macroDefinition languageCompatibility="c asm" name="APP_GECKO_INFO_PAGE_BTL" value="1"/>
+  <macroDefinition languageCompatibility="c asm" name="CONFIGURATION_HEADER" value="&quot;thread-configuration.h&quot;"/>
+  <macroDefinition partCompatibility=".*ember.*" languageCompatibility="c asm" name="CORTEXM3_EFR32MG12P332F1024GL125" value="1"/>
+  <macroDefinition partCompatibility=".*ember.*" languageCompatibility="c asm" name="CORTEXM3_EFR32MG12P332F1024GL125_MICRO" value="1"/>
+  <macroDefinition languageCompatibility="c asm" name="PLATFORM_HEADER" value="&quot;platform/base/hal/micro/cortexm3/compiler/gcc.h&quot;"/>
+  <macroDefinition partCompatibility=".*efr32.*" languageCompatibility="c asm" name="EFR32MG12P" value="1"/>
+  <macroDefinition partCompatibility=".*efr32.*" languageCompatibility="c asm" name="EFR32MG12P332F1024GL125" value="1"/>
+  <macroDefinition partCompatibility=".*efr32.*" languageCompatibility="c asm" name="EFR32_SERIES1_CONFIG2_MICRO" value="1"/>
+  <macroDefinition languageCompatibility="c asm" name="LOCKBITS_IN_MAINFLASH_SIZE" value="0"/>
+  <macroDefinition languageCompatibility="c asm" name="PSSTORE_SIZE" value="0"/>
+  <macroDefinition languageCompatibility="c asm" name="LONGTOKEN_SIZE" value="0"/>
+  <macroDefinition name="HAL_CONFIG" value="1"/>
+  <macroDefinition name="EMBER_AF_USE_HWCONF" value=""/>
+  <macroDefinition name="EMBER_COMMAND_BUFFER_LENGTH" value="250"/>
+  <macroDefinition name="EMBER_AF_API_EMBER_TYPES" value="&quot;stack/include/ember-types.h&quot;"/>
+  <macroDefinition name="EMBER_STACK_IP" value=""/>
+  <macroDefinition name="MBEDTLS_CONFIG_FILE" value="&quot;stack/ip/tls/mbedtls/config.h&quot;"/>
+  <macroDefinition name="EMBER_MBEDTLS_STACK" value=""/>
+  <macroDefinition name="USE_NVM3" value=""/>
+  <macroDefinition name="NVM3_DEFAULT_NVM_SIZE" value="NVM3_FLASH_PAGES*FLASH_PAGE_SIZE"/>
+  <macroDefinition name="MFGLIB" value=""/>
+  <macroDefinition name="HAVE_TLS_JPAKE" value=""/>
+  <macroDefinition name="HAVE_TLS_ECDHE_ECDSA" value=""/>
+  <macroDefinition name="DEBUG_LEVEL" value="FULL_DEBUG"/>
+  <macroDefinition name="EMLIB_USER_CONFIG" value=""/>
+  <macroDefinition name="APPLICATION_TOKEN_HEADER" value="&quot;thread-token.h&quot;"/>
+  <macroDefinition name="APPLICATION_MFG_TOKEN_HEADER" value="&quot;thread-mfg-token.h&quot;"/>
+  <macroDefinition name="NVM3_FLASH_PAGES" value="18"/>
+  <macroDefinition name="NVM3_DEFAULT_CACHE_SIZE" value="200"/>
+  <macroDefinition name="NVM3_DEFAULT_MAX_OBJECT_SIZE" value="254"/>
+  <macroDefinition name="NVM3_DEFAULT_REPACK_HEADROOM" value="0"/>
+  <macroDefinition name="PHY_RAIL" value="1"/>
+  <macroDefinition name="PHY_RAIL_MP" value="1"/>
+  <toolOption toolId="iar.arm.toolchain.linker.v5.4.0" optionId="iar.arm.toolchain.linker.option.configSymbolDefs.v6.2.0" value="APP_GECKO_INFO_PAGE_BTL=1  FLASH_SIZE=1048576 RAM_SIZE=262144 SIMEEPROM_SIZE=36864 LOCKBITS_IN_MAINFLASH_SIZE=0 EMBER_MALLOC_HEAP_SIZE=0 HEADER_SIZE=256 PSSTORE_SIZE=0 LONGTOKEN_SIZE=0"/>
+  <toolOption partCompatibility=".*efr32.*" toolId="iar.arm.toolchain.linker.v5.4.0" optionId="iar.arm.toolchain.linker.option.icfFile.v5.4.0" value="${StudioSdkPath}/platform/base/hal/micro/cortexm3/efm32/iar-cfg.icf"/>
+  <toolOption partCompatibility=".*efr32.*" toolId="iar.arm.toolchain.linker.v5.4.0" optionId="iar.arm.toolchain.linker.option.programEntry.v5.4.0" value="__iar_program_start"/>
+  <toolOption partCompatibility=".*ember.*" toolId="iar.arm.toolchain.linker.v5.4.0" optionId="iar.arm.toolchain.linker.option.icfFile.v5.4.0" value="/home/marti/workspace/sdks/SimplicityStudio_v4/developer/sdks/gecko_sdk_suite/v2.6/platform/base/hal/micro/cortexm3/em35x/efr32mg12p332f1024gl125/iar-cfg.icf"/>
+  <toolOption toolId="iar.arm.toolchain.compiler.v5.4.1" optionId="iar.arm.toolchain.compiler.option.additionalUserOptions" value="--no_path_in_file_macros --separate_cluster_for_initialized_variables "/>
+  <toolOption toolId="com.silabs.ide.si32.gcc.cdt.managedbuild.toolchain.exe" optionId="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.linker.script" value="${StudioSdkPath}/platform/base/hal/micro/cortexm3/efm32/gcc-cfg.ld"/>
+  <toolOption toolId="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.linker.base" optionId="gnu.c.link.option.other">
+    <toolListOption partCompatibility=".*efr32.*" value="--defsym=FLASH_SIZE=1048576"/>
+    <toolListOption partCompatibility=".*efr32.*" value="--defsym=RAM_SIZE=262144"/>
+    <toolListOption partCompatibility=".*efr32.*" value="--defsym=FLASH_PAGE_SIZE=2048"/>
+    <toolListOption partCompatibility=".*efr32.* .*em.*" value="--defsym=SIMEEPROM_SIZE=36864"/>
+    <toolListOption partCompatibility=".*efr32.* .*em.*" value="--defsym=PSSTORE_SIZE=0"/>
+    <toolListOption partCompatibility=".*efr32.* .*em.*" value="--defsym=LONGTOKEN_SIZE=0"/>
+    <toolListOption partCompatibility=".*efr32.* .*em.*" value="--defsym=HEADER_SIZE=256"/>
+    <toolListOption partCompatibility=".*efr32.*" value="--defsym=LOCKBITS_IN_MAINFLASH_SIZE=0"/>
+    <toolListOption partCompatibility=".*efr32.*" value="--defsym=APP_GECKO_INFO_PAGE_BTL=1"/>
+    <toolListOption partCompatibility=".*efr32.*" value="--defsym=EMBER_MALLOC_HEAP_SIZE=0"/>
+    <toolListOption partCompatibility=".*efr32.*" value=""/>
+  </toolOption>
+  <prebuildStep> sh '/home/marti/workspace/tesi/cross-standard-wur/ook-thread-noos/light-prebuild.sh' '${BuildArtifactFileBaseName}' '${ProjDirPath}' '${TOOLKIT_DIR}' '/home/marti/workspace/sdks/SimplicityStudio_v4'</prebuildStep>
+  <postbuildStep> sh '/home/marti/workspace/tesi/cross-standard-wur/ook-thread-noos/light-postbuild.sh' '${BuildArtifactFileBaseName}' '${ProjDirPath}' '${TOOLKIT_DIR}' '/home/marti/workspace/sdks/SimplicityStudio_v4'</postbuildStep>
+</project>
